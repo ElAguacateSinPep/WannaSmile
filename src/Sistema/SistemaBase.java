@@ -12,12 +12,12 @@ public class SistemaBase implements Sistema {
 	@Override
 	public String getNombre() {
 		return "Sistema Desconocido";
-	} // Sin variable
+	}
 
 	@Override
 	public String getSO() {
 		return "Ninguno";
-	} // Sin variable
+	}
 
 	@Override
 	public String getArquitectura() {
@@ -27,10 +27,10 @@ public class SistemaBase implements Sistema {
 	@Override
 	public int getDeteccion() {
 		return 0;
-	} // Sin variable
+	}
 
 	@Override
 	public int getContencion() {
 		return 0;
-	} // Sin variable
+	}
 }

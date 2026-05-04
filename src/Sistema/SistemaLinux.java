@@ -18,11 +18,11 @@ public class SistemaLinux extends SistemaBase {
 
 	@Override
 	public int getDeteccion() {
-		return 75; // Alta detección
+		return 75;
 	}
 
 	@Override
 	public int getContencion() {
-		return 25; // 75 + 25 = 100
+		return 25;
 	}
 }

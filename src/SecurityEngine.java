@@ -44,9 +44,9 @@ public class SecurityEngine {
 			menu.imprimirTransicionAMalware();
 			configurarMalware();
 		}
-
-		// 2. FASE CRÍTICA: Enlace de arquitectura
-		enlazarYMostrar();
+		// Aqui se accede a la arquiterura de sistema y se le pasa a malware
+		this.malwareAtacante.setObjetivo(this.sistemaDefensa);
+		MostrarCreacion();
 	}
 
 	private void configurarMalware() {
@@ -66,6 +66,8 @@ public class SecurityEngine {
 
 			int puntosSigilo = menu.imprimirMalwareSigilo();
 			this.malwareAtacante = new SigiloDecorator(this.malwareAtacante, puntosSigilo);
+
+			this.malwareAtacante = new PropagacionDecorator(this.malwareAtacante, puntosSigilo);
 
 			int opcionElegida = menu.imprimirMalwareSistemaObjetivo();
 			this.malwareAtacante = new SODecorator(this.malwareAtacante, opcionElegida);
@@ -95,15 +97,15 @@ public class SecurityEngine {
 			int arqOp = menu.imprimirSistemaArquitectura();
 			this.sistemaDefensa = new ArquitecturaDecorator(this.sistemaDefensa, arqOp);
 
+			// 5. Envolvemos con la deteccion y automaticamente con la contencion
 			int puntosDeteccion = menu.imprimirSistemaDeteccion();
 			this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa, puntosDeteccion);
+			this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa, puntosDeteccion);
 		}
 		System.out.println("[+] Sistema de defensa desplegado.");
 	}
 
-	private void enlazarYMostrar() {
-		// El malware se vincula al sistema creado (Fase de Infección)
-		this.malwareAtacante.setObjetivo(this.sistemaDefensa);
+	private void MostrarCreacion() {
 
 		System.out.println("\n========================================");
 		System.out.println("       ESTADO FINAL DE LA CREACIÓN");

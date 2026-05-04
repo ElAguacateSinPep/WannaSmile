@@ -6,7 +6,6 @@ public class ArquitecturaDecorator extends SistemaDecorator {
 	public ArquitecturaDecorator(Sistema envuelto, int opcionMenu) {
 		super(envuelto);
 
-		// Solo las 3 opciones permitidas
 		switch (opcionMenu) {
 			case 1:
 				this.arquitecturaElegida = "x64";

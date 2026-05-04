@@ -3,7 +3,7 @@ package Proyecto.src.Sistema;
 public class SistemaMac extends SistemaBase {
 
 	public SistemaMac() {
-		this.arquitectura = "ARM"; // Arquitectura restringida
+		this.arquitectura = "ARM";
 	}
 
 	@Override
@@ -23,6 +23,6 @@ public class SistemaMac extends SistemaBase {
 
 	@Override
 	public int getContencion() {
-		return 50; // 50 + 50 = 100
+		return 50;
 	}
 }
