@@ -1,13 +1,16 @@
 package sistema;
 
-public class PenalizacionDeteccionDecorator extends SistemaDecorator {
-
-	public PenalizacionDeteccionDecorator(Sistema envuelto) {
-		super(envuelto);
-	}
-
-	@Override
-	public int getDeteccion() {
-		return super.getDeteccion() - 10;
-	}
+public class PenalizacionDeteccionDecorator extends SistemaDecorator
+{
+    // --------------------------- Constructores
+    public PenalizacionDeteccionDecorator(Sistema envuelto)
+    {
+        super(envuelto);
+    }
+    // ------------------------ Métodos Públicos
+    @Override
+    public int getDeteccion()
+    {
+        return super.getDeteccion() - 10;
+    }
 }

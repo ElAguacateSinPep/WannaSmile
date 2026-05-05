@@ -1,13 +1,10 @@
 package sistema;
 
-public interface Sistema {
-	String getNombre();
-
-	String getSO();
-
-	String getArquitectura();
-
-	int getDeteccion();
-
-	int getContencion();
+public interface Sistema
+{
+    String getNombre();
+    String getSO();
+    String getArquitectura();
+    int getDeteccion();
+    int getContencion();
 }

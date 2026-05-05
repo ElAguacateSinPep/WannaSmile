@@ -4,139 +4,157 @@ import malware.*;
 import sistema.*;
 import gui.*;
 
-public class SecurityEngine {
+public class SecurityEngine
+{
+    // ------------------------------- Atributos
+    private static SecurityEngine instanciaUnica;
 
-	private static SecurityEngine instanciaUnica;
+    private MenuConsola           menu;
+    private MalwareFactory        malwareFactory;
+    private SistemaFactory        sistemaFactory;
 
-	private MenuConsola menu;
-	private MalwareFactory malwareFactory;
-	private SistemaFactory sistemaFactory;
+    private Malware               malwareAtacante;
+    private Sistema               sistemaDefensa;
+    // --------------------------- Constructores
+    private SecurityEngine()
+    {
+        this.menu = new MenuConsola();
+        this.malwareFactory = new MalwareFactory();
+        this.sistemaFactory = new SistemaFactory();
+    }
+    // ------------------------ Métodos Públicos
+    public static SecurityEngine getInstance()
+    {
+        if (instanciaUnica == null)
+        {
+            instanciaUnica = new SecurityEngine(); // Se crea solo la primera vez
+        }
+        return instanciaUnica;
+    }
 
-	private Malware malwareAtacante;
-	private Sistema sistemaDefensa;
+    public void iniciarSimulacion()
+    {
+        AsciiArtManager.imprimirhappyface();
+        AsciiArtManager.imprimirLogoPrincipal();
 
-	private SecurityEngine() {
-		this.menu = new MenuConsola();
-		this.malwareFactory = new MalwareFactory();
-		this.sistemaFactory = new SistemaFactory();
-	}
+        // 1. Elegir orden de creación
+        int eleccion = menu.ImprimirMenuPrincipal();
 
-	public static SecurityEngine getInstance() {
-		if (instanciaUnica == null) {
-			instanciaUnica = new SecurityEngine(); // Se crea solo la primera vez
-		}
-		return instanciaUnica;
-	}
+        if (eleccion == 1)
+        { // Primero Malware
+            configurarMalware();
+            menu.imprimirTransicionASistema();
+            configurarSistema();
+        }
+        else
+        { // Primero Sistema
+            configurarSistema();
+            menu.imprimirTransicionAMalware();
+            configurarMalware();
+        }
+        // Aqui se accede a la arquiterura de sistema y se le pasa a malware
+        this.malwareAtacante.setObjetivo(this.sistemaDefensa);
+        MostrarCreacion();
+    }
+    // ------------------------ Métodos Privados
+    private void configurarMalware()
+    {
+        int pref = menu.imprimirPreferenciaMalware();
+        if (pref == 1)
+        {
+            int op = menu.imprimirOpcionesPreconfiguradoMalware();
+            this.malwareAtacante = malwareFactory.crearMalwarePreconfigurado(op);
+        }
+        else
+        {
+            // Creación paso a paso con Decoradores
+            this.malwareAtacante = malwareFactory.crearMalwareBase();
 
-	public void iniciarSimulacion() {
-		AsciiArtManager.imprimirhappyface();
-		AsciiArtManager.imprimirLogoPrincipal();
+            int tipoOp = menu.imprimirMalwareConfiguracion();
+            this.malwareAtacante = new TipoDecorator(this.malwareAtacante, tipoOp);
 
-		// 1. Elegir orden de creación
-		int eleccion = menu.ImprimirMenuPrincipal();
+            String nombre = menu.imprimirMalwareNombre();
+            this.malwareAtacante = new NombreDecorator(this.malwareAtacante, nombre);
 
-		if (eleccion == 1) { // Primero Malware
-			configurarMalware();
-			menu.imprimirTransicionASistema();
-			configurarSistema();
-		} else { // Primero Sistema
-			configurarSistema();
-			menu.imprimirTransicionAMalware();
-			configurarMalware();
-		}
-		// Aqui se accede a la arquiterura de sistema y se le pasa a malware
-		this.malwareAtacante.setObjetivo(this.sistemaDefensa);
-		MostrarCreacion();
-	}
+            int puntosSigilo = menu.imprimirMalwareSigilo();
+            this.malwareAtacante = new SigiloDecorator(this.malwareAtacante, puntosSigilo);
 
-	private void configurarMalware() {
-		int pref = menu.imprimirPreferenciaMalware();
-		if (pref == 1) {
-			int op = menu.imprimirOpcionesPreconfiguradoMalware();
-			this.malwareAtacante = malwareFactory.crearMalwarePreconfigurado(op);
-		} else {
-			// Creación paso a paso con Decoradores
-			this.malwareAtacante = malwareFactory.crearMalwareBase();
+            this.malwareAtacante = new PropagacionDecorator(this.malwareAtacante, puntosSigilo);
 
-			int tipoOp = menu.imprimirMalwareConfiguracion();
-			this.malwareAtacante = new TipoDecorator(this.malwareAtacante, tipoOp);
+            int opcionElegida = menu.imprimirMalwareSistemaObjetivo();
+            this.malwareAtacante = new SODecorator(this.malwareAtacante, opcionElegida);
+        }
+        System.out.println("[+] Malware listo en memoria.");
+    }
 
-			String nombre = menu.imprimirMalwareNombre();
-			this.malwareAtacante = new NombreDecorator(this.malwareAtacante, nombre);
+    private void configurarSistema()
+    {
+        int pref = menu.imprimirPreferenciaSistema();
+        if (pref == 1)
+        {
+            int op = menu.imprimirOpcionesPreconfiguradoSistema();
+            this.sistemaDefensa = sistemaFactory.crearSistemaPreconfigurado(op);
+        }
+        else
+        {
+            // Creación paso a paso con Decoradores de Sistema
 
-			int puntosSigilo = menu.imprimirMalwareSigilo();
-			this.malwareAtacante = new SigiloDecorator(this.malwareAtacante, puntosSigilo);
+            this.sistemaDefensa = new SistemaBase();
 
-			this.malwareAtacante = new PropagacionDecorator(this.malwareAtacante, puntosSigilo);
+            // 2. Envolvemos con el Nombre
+            String nombre = menu.imprimirSistemaNombre();
+            this.sistemaDefensa = new NombreSistemaDecorator(this.sistemaDefensa, nombre);
 
-			int opcionElegida = menu.imprimirMalwareSistemaObjetivo();
-			this.malwareAtacante = new SODecorator(this.malwareAtacante, opcionElegida);
-		}
-		System.out.println("[+] Malware listo en memoria.");
-	}
+            // 3. Envolvemos con el Sistema Operativo
+            int soOp = menu.imprimirSistemaConfiguracion();
+            this.sistemaDefensa = new SOSistemaDecorator(this.sistemaDefensa, soOp);
 
-	private void configurarSistema() {
-		int pref = menu.imprimirPreferenciaSistema();
-		if (pref == 1) {
-			int op = menu.imprimirOpcionesPreconfiguradoSistema();
-			this.sistemaDefensa = sistemaFactory.crearSistemaPreconfigurado(op);
-		} else {
-			// Creación paso a paso con Decoradores de Sistema
+            // 4. Envolvemos con la Arquitectura
+            int arqOp = menu.imprimirSistemaArquitectura();
+            this.sistemaDefensa = new ArquitecturaDecorator(this.sistemaDefensa, arqOp);
 
-			this.sistemaDefensa = new SistemaBase();
+            // 5. Envolvemos con la deteccion y automaticamente con la contencion
+            int puntosDeteccion = menu.imprimirSistemaDeteccion();
+            this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa, puntosDeteccion);
+            this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa, puntosDeteccion);
+        }
+        System.out.println("[+] Sistema de defensa desplegado.");
+    }
 
-			// 2. Envolvemos con el Nombre
-			String nombre = menu.imprimirSistemaNombre();
-			this.sistemaDefensa = new NombreSistemaDecorator(this.sistemaDefensa, nombre);
+    private void MostrarCreacion()
+    {
 
-			// 3. Envolvemos con el Sistema Operativo
-			int soOp = menu.imprimirSistemaConfiguracion();
-			this.sistemaDefensa = new SOSistemaDecorator(this.sistemaDefensa, soOp);
+        System.out.println("\n========================================");
+        System.out.println("       ESTADO FINAL DE LA CREACIÓN");
+        System.out.println("========================================");
 
-			// 4. Envolvemos con la Arquitectura
-			int arqOp = menu.imprimirSistemaArquitectura();
-			this.sistemaDefensa = new ArquitecturaDecorator(this.sistemaDefensa, arqOp);
+        System.out.println("SISTEMA DEFENSA:");
+        System.out.println(" -> Nombre: " + sistemaDefensa.getNombre());
+        System.out.println(" -> SO: " + sistemaDefensa.getSO());
+        System.out.println(" -> Arquitectura: " + sistemaDefensa.getArquitectura());
+        System.out.println(" -> Puntos Detección: " + sistemaDefensa.getDeteccion());
+        System.out.println(" -> Puntos Contención: " + sistemaDefensa.getContencion());
 
-			// 5. Envolvemos con la deteccion y automaticamente con la contencion
-			int puntosDeteccion = menu.imprimirSistemaDeteccion();
-			this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa, puntosDeteccion);
-			this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa, puntosDeteccion);
-		}
-		System.out.println("[+] Sistema de defensa desplegado.");
-	}
+        System.out.println("\nAMENAZA ATACANTE:");
+        System.out.println(" -> Nombre: " + malwareAtacante.getNombre());
+        System.out.println(" -> Tipo: " + malwareAtacante.getTipo());
+        System.out.println(" -> Arquitectura Objetivo: " + malwareAtacante.getArquitectura());
+        System.out.println(" -> Puntos Sigilo: " + malwareAtacante.getSigilo());
+        System.out.println(" -> Puntos Propagación: " + malwareAtacante.getPropagacion());
+        System.out.println("========================================\n");
 
-	private void MostrarCreacion() {
+        // Mostrar arte ASCII final
+        imprimirArteFinal();
+    }
 
-		System.out.println("\n========================================");
-		System.out.println("       ESTADO FINAL DE LA CREACIÓN");
-		System.out.println("========================================");
-
-		System.out.println("SISTEMA DEFENSA:");
-		System.out.println(" -> Nombre: " + sistemaDefensa.getNombre());
-		System.out.println(" -> SO: " + sistemaDefensa.getSO());
-		System.out.println(" -> Arquitectura: " + sistemaDefensa.getArquitectura());
-		System.out.println(" -> Puntos Detección: " + sistemaDefensa.getDeteccion());
-		System.out.println(" -> Puntos Contención: " + sistemaDefensa.getContencion());
-
-		System.out.println("\nAMENAZA ATACANTE:");
-		System.out.println(" -> Nombre: " + malwareAtacante.getNombre());
-		System.out.println(" -> Tipo: " + malwareAtacante.getTipo());
-		System.out.println(" -> Arquitectura Objetivo: " + malwareAtacante.getArquitectura());
-		System.out.println(" -> Puntos Sigilo: " + malwareAtacante.getSigilo());
-		System.out.println(" -> Puntos Propagación: " + malwareAtacante.getPropagacion());
-		System.out.println("========================================\n");
-
-		// Mostrar arte ASCII final
-		imprimirArteFinal();
-	}
-
-	private void imprimirArteFinal() {
-		String tipo = malwareAtacante.getTipo();
-		if (tipo.contains("Troyano"))
-			AsciiArtManager.imprimirTroyano();
-		else if (tipo.contains("Ransomware"))
-			AsciiArtManager.imprimirRansomware();
-		else if (tipo.contains("Keylogger"))
-			AsciiArtManager.imprimirKeylogger();
-	}
+    private void imprimirArteFinal()
+    {
+        String tipo = malwareAtacante.getTipo();
+        if (tipo.contains("Troyano"))
+            AsciiArtManager.imprimirTroyano();
+        else if (tipo.contains("Ransomware"))
+            AsciiArtManager.imprimirRansomware();
+        else if (tipo.contains("Keylogger"))
+            AsciiArtManager.imprimirKeylogger();
+    }
 }

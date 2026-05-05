@@ -1,13 +1,16 @@
 package sistema;
 
-public class MejoraContencionDecorator extends SistemaDecorator {
-
-	public MejoraContencionDecorator(Sistema envuelto) {
-		super(envuelto);
-	}
-
-	@Override
-	public int getContencion() {
-		return super.getContencion() + 10;
-	}
+public class MejoraContencionDecorator extends SistemaDecorator
+{
+    // --------------------------- Constructores
+    public MejoraContencionDecorator(Sistema envuelto)
+    {
+        super(envuelto);
+    }
+    // ------------------------ Métodos Públicos
+    @Override
+    public int getContencion()
+    {
+        return super.getContencion() + 10;
+    }
 }
