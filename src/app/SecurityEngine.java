@@ -8,8 +8,8 @@ public class SecurityEngine
 {
     // ------------------------------- Atributos
     private static SecurityEngine instanciaUnica;
-
     private MenuConsola           menu;
+
     private MalwareFactory        malwareFactory;
     private SistemaFactory        sistemaFactory;
 
@@ -27,7 +27,8 @@ public class SecurityEngine
     {
         if (instanciaUnica == null)
         {
-            instanciaUnica = new SecurityEngine(); // Se crea solo la primera vez
+            // Se crea solo la primera vez
+            instanciaUnica = new SecurityEngine();
         }
         return instanciaUnica;
     }
@@ -114,9 +115,9 @@ public class SecurityEngine
             this.sistemaDefensa = new ArquitecturaDecorator(this.sistemaDefensa, arqOp);
 
             // 5. Envolvemos con la deteccion y automaticamente con la contencion
-            int puntosDeteccion = menu.imprimirSistemaDeteccion();
-            this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa, puntosDeteccion);
-            this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa, puntosDeteccion);
+            int puntosDeteccionContencion = menu.imprimirSistemaDeteccion();
+            this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa, puntosDeteccionContencion);
+            this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa, puntosDeteccionContencion);
         }
         System.out.println("[+] Sistema de defensa desplegado.");
     }
