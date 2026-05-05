@@ -1,0 +1,25 @@
+# Carpeta raíz específica
+/5_proyecto_final/
+
+# Mac
+.DS_Store
+
+# IDEs
+.vscode/
+.settings/
+*.iml
+.idea/
+
+# Compilados
+bin/
+out/
+*.class
+
+# Logs
+*.log
+
+# Dependencias
+target/
+
+# Otros
+class.txt
