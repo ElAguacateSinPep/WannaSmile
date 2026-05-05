@@ -1,4 +1,4 @@
-package Proyecto.src.Sistema;
+package sistema;
 
 public class SOSistemaDecorator extends SistemaDecorator {
 	private String sistemaOperativo;

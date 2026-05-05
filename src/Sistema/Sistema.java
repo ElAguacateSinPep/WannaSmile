@@ -1,4 +1,4 @@
-package Proyecto.src.Sistema;
+package sistema;
 
 public interface Sistema {
 	String getNombre();

@@ -1,4 +1,4 @@
-package Proyecto.src.Sistema;
+package sistema;
 
 public abstract class SistemaDecorator implements Sistema {
 	protected Sistema sistemaEnvuelto;

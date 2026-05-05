@@ -1,4 +1,4 @@
-package Proyecto.src.Sistema;
+package sistema;
 
 public class SistemaBase implements Sistema {
 

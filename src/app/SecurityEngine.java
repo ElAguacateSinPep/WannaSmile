@@ -1,8 +1,8 @@
-package Proyecto.src;
+package app;
 
-import Proyecto.src.malware.*;
-import Proyecto.src.Sistema.*;
-import Proyecto.src.Gui.*;
+import malware.*;
+import sistema.*;
+import gui.*;
 
 public class SecurityEngine {
 

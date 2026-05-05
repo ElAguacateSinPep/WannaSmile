@@ -1,4 +1,4 @@
-package Proyecto.src.Gui;
+package gui;
 
 public class AsciiArtManager {
 
