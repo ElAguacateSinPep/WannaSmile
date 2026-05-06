@@ -7,4 +7,5 @@ public interface Sistema
     String getArquitectura();
     int getDeteccion();
     int getContencion();
+    int ejecutarAnalisisManual();
 }

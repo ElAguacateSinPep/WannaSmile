@@ -6,11 +6,13 @@ public class MenuConsola
 {
     // ------------------------------- Atributos
     private Scanner sc;
+
     // --------------------------- Constructores
     public MenuConsola()
     {
         this.sc = new Scanner(System.in);
     }
+
     // ------------------------ Métodos Públicos
     public int ImprimirMenuPrincipal()
     {
@@ -141,6 +143,180 @@ public class MenuConsola
     {
         System.out.println(
             "\n[!] Defensa configurada. Pasando automáticamente a la configuración de Amenaza...");
+    }
+
+    // Anlálisis > config manual > windows
+
+    public int alertaAceptarPermisos()
+    {
+        System.out.println(
+            "Windows Defender: Este archivo solicita permisos de administrador."
+                + "\n¿Permitir?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaIgnorarAdvertencia()
+    {
+        System.out.println(
+            "Windows Defender detecta comportamiento sospechoso."
+                + "\n¿Ignorar advertencia?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    // Anlálisis > config manual > mac
+    public int alertaAbrirArchivoNoVerificado()
+    {
+        System.out.println(
+            "Este archivo proviene de un desarrollador no verificado."
+                + "\n¿Abrir igualmente?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaSegundoPlano()
+    {
+        System.out.println(
+            "macOS solicita permiso para ejecutar el archivo en segundo plano."
+                + "\n¿Permitir?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    // Anlálisis > config manual > linux
+
+    public int alertaFirewall()
+    {
+        System.out.println(
+            "El firewall de linux está desactivado."
+                + "\n¿Deseas activarlo?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaSODesactualizado()
+    {
+        System.out.println(
+            "Linux está desactualizado. "
+                + "\n¿Deseas actualizar a la última versión?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaConexion()
+    {
+        System.out.println(
+            "PortDaemon ha bloqueado una conexión sospechosa."
+                + "\n ¿Permitirla manualmente?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    // Respuesta ante incidentes > windows
+
+    public int alertaSeguridad()
+    {
+        System.out.println(
+            "Windows Defender no puede garantizar la seguridad del archivo."
+                + "\n¿Ejecutar?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaArchivoDesconocido()
+    {
+        System.out.println(
+            "Archivo desconocido intenta comunicarse con Internet."
+                + "\n¿Permitir acceso?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaWindowsFirewall()
+    {
+        System.out.println(
+            "Windows Firewall ha bloqueado una conexión sospechosa."
+                + "\n¿Permitirla manualmente?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+
+        return pedirOpcion(1, 2);
+    }
+
+    // Respuesta ante incidentes > mac
+
+    public int alertaPuertoLocal()
+    {
+        System.out.println(
+            "El archivo intenta abrir un puerto local. "
+                + "\n¿Permitir apertura de puerto?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaAccesoFinder()
+    {
+        System.out.println(
+            "El archivo solicita acceso al Finder. "
+                + "\n¿Permitir acceso completo?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaItemsInicio()
+    {
+        System.out.println(
+            "El archivo intenta añadirse a ítems de inicio. "
+                + "\n¿Proceder?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    // Respuesta ante incidentes > linux
+
+    public int alertaSudo()
+    {
+        System.out.println(
+            "Terminal: El archivo intenta ejecutarse con sudo."
+                + "\n¿Introducir contraseña?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    public int alertaPropagacionSisArchivos()
+    {
+        System.out.println(
+            "El archivo intenta copiarse en varias ubicaciones del sistema."
+                + "\n¿Permitir?"
+                + "\n[1] - Si"
+                + "\n[2] - No");
+        return pedirOpcion(1, 2);
+    }
+
+    // Seleccionar estrategia de análisis
+    public int seleccionarTipoAnalisisAutomatico()
+    {
+        System.out.println(
+            "Ahora vamos a realizar un Análisis automático del archivo\n"
+            + "¿Qué tipo de análisis deseas realizar?\n"
+                + "\n[1] - Análisis Rápido"
+                + "\n[2] - Análisis Profundo"
+                + "\n[3] - Análisis Heurístico");
+        return pedirOpcion(1, 3);
     }
 
     // Pide un número y obliga al usuario a que esté entre el MIN y el MAX

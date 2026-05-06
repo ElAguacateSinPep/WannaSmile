@@ -1,5 +1,6 @@
 package antivirus;
 
-public interface AnalisisStrategy {
-
+public interface AnalisisStrategy
+{
+    int ejecutarAnalisisAutomatico();
 }

@@ -42,4 +42,10 @@ public class SistemaBase implements Sistema
     {
         return 0;
     }
+
+    @Override
+    public int ejecutarAnalisisManual()
+    {
+        return 0;
+    }
 }

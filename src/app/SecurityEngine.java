@@ -15,6 +15,7 @@ public class SecurityEngine
 
     private Malware               malwareAtacante;
     private Sistema               sistemaDefensa;
+    private 
     // --------------------------- Constructores
     private SecurityEngine()
     {

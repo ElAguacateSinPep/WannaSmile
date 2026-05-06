@@ -41,4 +41,10 @@ public abstract class SistemaDecorator implements Sistema
     {
         return sistemaEnvuelto.getContencion();
     }
+
+    @Override
+    public int ejecutarAnalisisManual()
+    {
+        return sistemaEnvuelto.ejecutarAnalisisManual();
+    }
 }
