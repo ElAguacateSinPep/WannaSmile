@@ -35,6 +35,7 @@ public class SecurityEngine
 
     public void iniciarSimulacion()
     {
+
         AsciiArtManager.imprimirhappyface();
         AsciiArtManager.imprimirLogoPrincipal();
 

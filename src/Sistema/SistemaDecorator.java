@@ -10,6 +10,7 @@ public abstract class SistemaDecorator implements Sistema
     {
         this.sistemaEnvuelto = envuelto;
     }
+
     // ------------------------ Métodos Públicos
     @Override
     public String getNombre()
