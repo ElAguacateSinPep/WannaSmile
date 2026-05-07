@@ -14,7 +14,7 @@ public class AnalisisHeuristico implements AnalisisStrategy
         menu.logsAnalisisHeuristico();
         variacionDeteccion += 50;
 
-        menu.verVariacionDeteccion(variacionDeteccion);
+        menu.printVariacionDeteccion(variacionDeteccion);
 
         return variacionDeteccion;
     }

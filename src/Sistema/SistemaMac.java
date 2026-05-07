@@ -46,23 +46,23 @@ public class SistemaMac extends SistemaBase
 
         if (menu.alertaAbrirArchivoNoVerificado() == 1)
         {
-            menu.verAumentoSigilo();
+            menu.printAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
-            menu.verDisminucionSigilo();
+            menu.printDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
         }
 
         if (menu.alertaSegundoPlano() == 1)
         {
-            menu.verAumentoSigilo();
+            menu.printAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
-            menu.verDisminucionSigilo();
+            menu.printDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
         }
 
@@ -74,36 +74,36 @@ public class SistemaMac extends SistemaBase
     {
         int variacionContencion = 0;
 
-        if(menu.alertaPuertoLocal() == 1)
+        if (menu.alertaPuertoLocal() == 1)
         {
-            menu.verDisminucionContencion();
+            menu.printDisminucionContencion();
             variacionContencion += DECREMENTO_CONTENCION;
         }
         else
         {
-            menu.verAumentoContencion();
+            menu.printAumentoContencion();
             variacionContencion += AUMENTO_CONTENCION;
         }
 
-        if(menu.alertaAccesoFinder() == 1)
+        if (menu.alertaAccesoFinder() == 1)
         {
-            menu.verDisminucionContencion();
+            menu.printDisminucionContencion();
             variacionContencion += DECREMENTO_CONTENCION;
         }
         else
         {
-            menu.verAumentoContencion();
+            menu.printAumentoContencion();
             variacionContencion += AUMENTO_CONTENCION;
         }
 
-        if(menu.alertaItemsInicio() == 1)
+        if (menu.alertaItemsInicio() == 1)
         {
-            menu.verDisminucionContencion();
+            menu.printDisminucionContencion();
             variacionContencion += DECREMENTO_CONTENCION;
         }
         else
         {
-            menu.verAumentoContencion();
+            menu.printAumentoContencion();
             variacionContencion += AUMENTO_CONTENCION;
         }
 

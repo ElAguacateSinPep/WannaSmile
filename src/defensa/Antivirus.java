@@ -33,7 +33,7 @@ public class Antivirus
     {
         if (analizarArchivo())
         {
-            menu.malwareDetectado();
+            menu.printMalwareDetectado();
             responderAnteIncidentes();
         }
 
@@ -48,26 +48,26 @@ public class Antivirus
         int sigilo = malware.getSigilo();
         int deteccion = sistema.getDeteccion();
 
-        menu.verStatsAnalisis(deteccion, sigilo);
+        menu.printStatsAnalisis(deteccion, sigilo);
 
         // Inicio Análisis Manual
         // Implementado de manera diferente segun el SO
         // Afecta a Sigilo del Malware
-        menu.inicioAnalisisManual();
+        menu.printInicioAnalisisManual();
         sigilo += sistema.ejecutarAnalisisManual();
         sigilo = ajustarStats(sigilo);
-        menu.verStatsAnalisis(deteccion, sigilo);
+        menu.printStatsAnalisis(deteccion, sigilo);
         // Fin Análisis Manual
 
         // Inicio Análisis Automático
         // Puede ser: Rápido, profundo o Heurístico
         // Depende de la estrategia seleccionada
         // Afecta a la Detección del Sistema
-        menu.inicioAnalisisAutomatico();
+        menu.printInicioAnalisisAutomatico();
         setAnalisisStrategy();
         deteccion += analisisStrategy.ejecutarAnalisisAutomatico();
         deteccion = ajustarStats(deteccion);
-        menu.verStatsAnalisis(deteccion, sigilo);
+        menu.printStatsAnalisis(deteccion, sigilo);
         // Inicio Análisis Automático
 
         // todo Actualizar estado
@@ -87,12 +87,12 @@ public class Antivirus
         int contencion = sistema.getContencion();
         int propagacion = malware.getPropagacion();
 
-        menu.verStatsRespuesta(propagacion, contencion);
+        menu.printStatsRespuesta(propagacion, contencion);
 
-        menu.inicioRespuesta();
+        menu.printInicioRespuesta();
         contencion += sistema.ejecutarProtocoloContencion();
         contencion = ajustarStats(contencion);
-        menu.verStatsRespuesta(propagacion, contencion);
+        menu.printStatsRespuesta(propagacion, contencion);
 
         // todo Actualizar estado
         if (contencion < propagacion)

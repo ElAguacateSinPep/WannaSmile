@@ -14,8 +14,7 @@ public class AnalisisProfundo implements AnalisisStrategy
         menu.logsAnalisisProfundo();
         variacionDeteccion += 10;
 
-        menu.verVariacionDeteccion(variacionDeteccion);
-
+        menu.printVariacionDeteccion(variacionDeteccion);
 
         return variacionDeteccion;
     }

@@ -45,34 +45,34 @@ public class SistemaLinux extends SistemaBase
 
         if (menu.alertaFirewall() == 1)
         {
-            menu.verDisminucionSigilo();
+            menu.printDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
         }
         else
         {
-            menu.verAumentoSigilo();
+            menu.printAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
         }
 
         if (menu.alertaSODesactualizado() == 1)
         {
-            menu.verDisminucionSigilo();
+            menu.printDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
         }
         else
         {
-            menu.verAumentoSigilo();
+            menu.printAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
         }
 
         if (menu.alertaConexion() == 1)
         {
-            menu.verAumentoSigilo();
+            menu.printAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
-            menu.verDisminucionSigilo();
+            menu.printDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
         }
 
@@ -84,25 +84,25 @@ public class SistemaLinux extends SistemaBase
     {
         int variacionContencion = 0;
 
-        if(menu.alertaSudo() == 1)
+        if (menu.alertaSudo() == 1)
         {
-            menu.verDisminucionContencion();
+            menu.printDisminucionContencion();
             variacionContencion += DECREMENTO_CONTENCION;
         }
         else
         {
-            menu.verAumentoContencion();
+            menu.printAumentoContencion();
             variacionContencion += AUMENTO_CONTENCION;
         }
 
-        if(menu.alertaPropagacionSisArchivos() == 1)
+        if (menu.alertaPropagacionSisArchivos() == 1)
         {
-            menu.verDisminucionContencion();
+            menu.printDisminucionContencion();
             variacionContencion += DECREMENTO_CONTENCION;
         }
         else
         {
-            menu.verAumentoContencion();
+            menu.printAumentoContencion();
             variacionContencion += AUMENTO_CONTENCION;
         }
 

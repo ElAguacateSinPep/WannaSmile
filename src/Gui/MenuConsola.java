@@ -21,7 +21,7 @@ public class MenuConsola
     }
 
     // ------------------------ Métodos Públicos
-    public int ImprimirMenuPrincipal()
+    public int printMenuPrincipal()
     {
         System.out.println("\n========================================");
         System.out.println("       WANNASMILE: ATTACK SIMULATOR");
@@ -34,7 +34,7 @@ public class MenuConsola
         return pedirOpcion(1, 2);
     }
 
-    public int imprimirPreferenciaSistema()
+    public int printPreferenciaSistema()
     {
         System.out.println(
             "\nPor donde quieres empezar?, un sistema preconfigurado o crear el tuyo propio?");
@@ -44,7 +44,7 @@ public class MenuConsola
         return pedirOpcion(1, 2);
     }
 
-    public int imprimirPreferenciaMalware()
+    public int printPreferenciaMalware()
     {
         System.out.println(
             "\nPor donde quieres empezar?, un malware preconfigurado o crear el tuyo propio?");
@@ -54,7 +54,7 @@ public class MenuConsola
         return pedirOpcion(1, 2);
     }
 
-    public int imprimirOpcionesPreconfiguradoSistema()
+    public int printOpcionesPreconfiguradoSistema()
     {
         System.out.println("\n--- CONFIGURACIÓN DE DEFENSA ---");
         System.out.println("Selecciona el sistema operativo objetivo:");
@@ -69,7 +69,7 @@ public class MenuConsola
         return pedirOpcion(1, 3);
     }
 
-    public int imprimirOpcionesPreconfiguradoMalware()
+    public int printOpcionesPreconfiguradoMalware()
     {
         System.out.println("\n--- CONFIGURACIÓN DE AMENAZA ---");
         System.out.println("Selecciona el vector de ataque base:");
@@ -85,7 +85,7 @@ public class MenuConsola
         return pedirOpcion(1, 3);
     }
 
-    public int imprimirMalwareConfiguracion()
+    public int printMalwareConfiguracion()
     {
         System.out.println("\nQue tipo de Malware quieres para tu archivo?");
         System.out.println("[1] Troyano\n[2] Ransomware\n[3] Keylogger");
@@ -93,7 +93,7 @@ public class MenuConsola
         return pedirOpcion(1, 3);
     }
 
-    public int imprimirSistemaConfiguracion()
+    public int printSistemaConfiguracion()
     {
         System.out.println("\nQue SO prefieres?");
         System.out.println("[1] Windows\n[2] MacOS\n[3] Linux");
@@ -101,21 +101,21 @@ public class MenuConsola
         return pedirOpcion(1, 3);
     }
 
-    public String imprimirMalwareNombre()
+    public String printMalwareNombre()
     {
         System.out.println("\nQue nombre vas a querer que tenga tu Malware?");
         System.out.print("-> Escribelo : ");
         return leerTexto();
     }
 
-    public int imprimirMalwareSigilo()
+    public int printMalwareSigilo()
     {
         System.out.println("\nQue nivel de ocultación (sigilo) deseas para tu Malware? (0 - 100)");
         System.out.print("-> Puntos de sigilo: ");
         return pedirOpcion(0, 100);
     }
 
-    public int imprimirMalwareSistemaObjetivo()
+    public int printMalwareSistemaObjetivo()
     {
         System.out.println("\n--- OBJETIVO DEL ATAQUE ---");
         System.out.println("¿Para qué sistema operativo estás diseñando este malware?");
@@ -126,14 +126,14 @@ public class MenuConsola
         return pedirOpcion(1, 3); // Solo acepta 1, 2 o 3
     }
 
-    public String imprimirSistemaNombre()
+    public String printSistemaNombre()
     {
         System.out.println("\nQue nombre vas a querer que tenga tu Sistema de Defensa?");
         System.out.print("-> Escribelo : ");
         return leerTexto();
     }
 
-    public int imprimirSistemaArquitectura()
+    public int printSistemaArquitectura()
     {
         System.out.println("\n--- VULNERABILIDAD DEL SISTEMA ---");
         System.out.println("Que arquitectura de procesador utiliza?");
@@ -142,7 +142,7 @@ public class MenuConsola
         return pedirOpcion(1, 3);
     }
 
-    public int imprimirSistemaDeteccion()
+    public int printSistemaDeteccion()
     {
         System.out
             .println("\nQue nivel de deteccion (antivirus) deseas para tu Sistema? (0 - 100)");
@@ -152,23 +152,33 @@ public class MenuConsola
         return pedirOpcion(0, 100);
     }
 
-    public void imprimirTransicionASistema()
+    public void printTransicionASistema()
     {
         System.out.println(
             "\n[!] Amenaza configurada. Pasando automáticamente a la configuración de Defensa...");
     }
 
-    public void imprimirTransicionAMalware()
+    public void printTransicionAMalware()
     {
         System.out.println(
             "\n[!] Defensa configurada. Pasando automáticamente a la configuración de Amenaza...");
+    }
+
+    public void printMalwareListo()
+    {
+        System.out.println("[+] Malware listo en memoria.");
+    }
+
+    public void printSistemaDesplegado()
+    {
+        System.out.println("[+] Sistema de defensa desplegado.");
     }
 
     // ====================================================
     // Antivirus
     // ====================================================
 
-    public void antivirusArchivoDetectado()
+    public void printAntivirusArchivoDetectado()
     {
         System.out.println(AMARILLO);
         System.out.println(
@@ -183,7 +193,7 @@ public class MenuConsola
         System.out.print(RESET);
     }
 
-    public void malwareDetectado()
+    public void printMalwareDetectado()
     {
         System.out.print(AMARILLO);
         System.out.println(
@@ -200,17 +210,17 @@ public class MenuConsola
         System.out.println(RESET);
     }
 
-    public void inicioAnalisisManual()
+    public void printInicioAnalisisManual()
     {
         System.out.println("--- ANALISIS MANUAL ---");
     }
 
-    public void inicioAnalisisAutomatico()
+    public void printInicioAnalisisAutomatico()
     {
         System.out.println("--- ANALISIS AUTOMATICO ---");
     }
 
-    public void inicioRespuesta()
+    public void printInicioRespuesta()
     {
         System.out.println("--- Respuesta ante incidentes ---");
     }
@@ -219,19 +229,19 @@ public class MenuConsola
     // Anlálisis > config manual
     // ====================================================
 
-    public void verStatsAnalisis(int deteccion, int sigilo)
+    public void printStatsAnalisis(int deteccion, int sigilo)
     {
         System.err.println(MORADO);
         System.out.println("║ DETECCION = " + deteccion + " | SIGILO = " + sigilo + " ║\n");
         System.out.println(RESET);
     }
 
-    public void verAumentoSigilo()
+    public void printAumentoSigilo()
     {
         System.out.println(ROJO + "+ 10 Sigilo\n" + RESET);
     }
 
-    public void verDisminucionSigilo()
+    public void printDisminucionSigilo()
     {
         System.out.println(VERDE + "- 10 Sigilo\n" + RESET);
     }
@@ -401,7 +411,7 @@ public class MenuConsola
         System.out.println();
     }
 
-    public void verVariacionDeteccion(int variacion)
+    public void printVariacionDeteccion(int variacion)
     {
         if (variacion >= 0)
         {
@@ -417,7 +427,7 @@ public class MenuConsola
     // Respuesta ante incidentes
     // ====================================================
 
-    public void verStatsRespuesta(int propagacion, int contencion)
+    public void printStatsRespuesta(int propagacion, int contencion)
     {
         System.err.println(MORADO);
         System.out
@@ -425,12 +435,12 @@ public class MenuConsola
         System.out.println(RESET);
     }
 
-    public void verAumentoContencion()
+    public void printAumentoContencion()
     {
         System.out.println(VERDE + "+ 20 Contencion\n" + RESET);
     }
 
-    public void verDisminucionContencion()
+    public void printDisminucionContencion()
     {
         System.out.println(ROJO + "- 20 Contencion\n" + RESET);
     }

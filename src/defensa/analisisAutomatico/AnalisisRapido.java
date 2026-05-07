@@ -14,7 +14,7 @@ public class AnalisisRapido implements AnalisisStrategy
         menu.logsAnalisisRaido();
         variacionDeteccion -= 10;
 
-        menu.verVariacionDeteccion(variacionDeteccion);
+        menu.printVariacionDeteccion(variacionDeteccion);
 
         return variacionDeteccion;
     }
