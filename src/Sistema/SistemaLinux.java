@@ -42,28 +42,35 @@ public class SistemaLinux extends SistemaBase
 
         if(menu.alertaFirewall() == 1)
         {
-            variacionSigilo -= 10;
+            menu.verDisminucionSigilo();
+            variacionSigilo += DECREMENTO_SIGILO;
         }
         else
         {
-            variacionSigilo += 10;
+            menu.verAumentoSigilo();
+            variacionSigilo += AUMENTO_SIGILO;
         }
 
         if(menu.alertaSODesactualizado() == 1)
         {
-            variacionSigilo -= 10;
+            menu.verDisminucionSigilo();
+            variacionSigilo += DECREMENTO_SIGILO;
         }
         else
         {
-            variacionSigilo += 10;
+            menu.verAumentoSigilo();
+            variacionSigilo += AUMENTO_SIGILO;
         }
 
         if(menu.alertaConexion() == 1)
         {
-            variacionSigilo += 10;
+            menu.verAumentoSigilo();
+            variacionSigilo += AUMENTO_SIGILO;
         }
         else
-            variacionSigilo -= 10;
+        {
+            variacionSigilo += DECREMENTO_SIGILO;
+        }
 
         return variacionSigilo;
     }

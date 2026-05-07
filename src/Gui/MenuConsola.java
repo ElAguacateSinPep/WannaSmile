@@ -2,15 +2,17 @@ package gui;
 
 import java.util.Scanner;
 
+import utils.Utils;
+
 public class MenuConsola
 {
     // ------------------------------- Atributos
-    private Scanner sc;
-    public static final String ROJO = "\u001B[31m";
-    public static final String VERDE = "\u001B[32m";
+    private Scanner            sc;
+    public static final String ROJO     = "\u001B[31m";
+    public static final String VERDE    = "\u001B[32m";
     public static final String AMARILLO = "\u001B[33m";
-    public static final String AZUL = "\u001B[34m";
-    public static final String RESET = "\u001B[0m";
+    public static final String MORADO   = "\u001B[35m";
+    public static final String RESET    = "\u001B[0m";
 
     // --------------------------- Constructores
     public MenuConsola()
@@ -75,8 +77,8 @@ public class MenuConsola
         System.out.println("┌───────────────────────┬────────────┬─────────────────┐");
         System.out.println("|         Nombre        |   Sigilo   |   Propagación   |");
         System.out.println("├───────────────────────┼────────────┼─────────────────┤");
-        System.out.println("| [1] Zeus(Troyano)     |     20     |        80       |");
-        System.out.println("| [2] Ryuk(Ransomware)  |     50     |        50       |");
+        System.out.println("| [1] Zeus(Troyano)     |     50     |        50       |");
+        System.out.println("| [2] Ryuk(Ransomware)  |     20     |        80       |");
         System.out.println("| [3] Emotet(Keylogger) |     80     |        20       |");
         System.out.println("└───────────────────────┴────────────┴─────────────────┘");
         System.out.print("-> Elige un malware: ");
@@ -169,14 +171,14 @@ public class MenuConsola
         System.out.println(AMARILLO);
         System.out.println(
             """
-            ╔═════════════════════════════════════════════════════════╗
-            ║                ⚠ ANTIVIRUS: ADVERTENCIA ⚠               ║
-            ╠═════════════════════════════════════════════════════════╣
-            ║  Nuevo archivo desconocido detectado                    ║
-            ║  Iniciando protocolo de respuesta anti-incidentes...    ║
-            ╚═════════════════════════════════════════════════════════╝
-            """);
-         System.out.println(RESET);
+                ╔═════════════════════════════════════════════════════════╗
+                ║                ⚠ ANTIVIRUS: ADVERTENCIA ⚠               ║
+                ╠═════════════════════════════════════════════════════════╣
+                ║  Nuevo archivo desconocido detectado                    ║
+                ║  Iniciando protocolo de respuesta anti-incidentes...    ║
+                ╚═════════════════════════════════════════════════════════╝
+                """);
+        System.out.print(RESET);
     }
 
     public void inicioAnalisisManual()
@@ -192,6 +194,13 @@ public class MenuConsola
     // ====================================================
     // Anlálisis > config manual > windows
     // ====================================================
+
+    public void verStatsAnalisis(int deteccion, int sigilo)
+    {
+        System.err.println(MORADO);
+        System.out.println("║ DETECCION = " + deteccion + " | SIGILO = " + sigilo + " ║\n");
+        System.out.println(RESET);
+    }
 
     public int alertaAceptarPermisos()
     {
@@ -289,19 +298,92 @@ public class MenuConsola
 
     public void malwareDetectado()
     {
-        System.out.println(AMARILLO);
+        System.out.print(AMARILLO);
         System.out.println(
             """
-            ╔═════════════════════════════════════════════════════════╗
-            ║                  ⚠ ANTIVIRUS: ALERTA ⚠                  ║
-            ╠═════════════════════════════════════════════════════════╣
-            ║  El archivo descargado contiene software malicioso      ║
-            ║  Iniciando protocolo de contención                      ║
-            ║                                                         ║
-            ║  Estado del sistema: Muy mal                            ║
-            ╚═════════════════════════════════════════════════════════╝
-            """);
-         System.out.println(RESET);
+                ╔═════════════════════════════════════════════════════════╗
+                ║                  ⚠ ANTIVIRUS: ALERTA ⚠                  ║
+                ╠═════════════════════════════════════════════════════════╣
+                ║  El archivo descargado contiene software malicioso      ║
+                ║  Iniciando protocolo de contención                      ║
+                ║                                                         ║
+                ║  Estado del sistema: Muy mal                            ║
+                ╚═════════════════════════════════════════════════════════╝
+                """);
+        System.out.println(RESET);
+    }
+
+    // ====================================================
+    // Análisis Automático
+    // ====================================================
+
+    public void logsAnalisisRaido()
+    {
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+
+        System.out.println("[ Analisis Rapido ] Escaneando firmas basicas del archivo...");
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+        System.out.println("[ Analisis Rapido ] Verificacion superficial completada.");
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+        System.out.println("[ ADVERTENCIA ] Algunas amenazas avanzadas podrian no detectarse.");
+
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+
+        System.out.println();
+    }
+
+    public void logsAnalisisProfundo()
+    {
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+
+        System.out.println("[ Analisis Profundo ] Revisando procesos, memoria y actividad sospechosa......");
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+        System.out.println("[ INFO ] Escaneo avanzado completado.");
+
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+
+        System.out.println();
+    }
+
+    public void logsAnalisisHeuristico()
+    {
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+
+        System.out.println("[ Analisis Heurístico ] Analizando patrones de comportamiento desconocidos...");
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+        System.out.println("[ Analisis Heurístico ] Comparando actividad del archivo con amenazas registradas..");
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+        System.out.println("[ Analisis Heurístico ] Detectando anomalías en tiempo de ejecución...");
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+        System.out.println("[ INFO ] Escaneo Heurístico completado.");
+
+        // todo descomentar para presentar
+        // Utils.esperar(800);
+
+        System.out.println();
+    }
+
+    public void verVariacionDeteccion(int variacion)
+    {
+        if (variacion >= 0)
+        {
+            System.out.println(VERDE + "+ " + variacion + " Deteccion\n" + RESET);
+        }
+        else
+        {
+            System.out.println(ROJO + variacion + " Deteccion\n" + RESET);
+        }
     }
 
     // ====================================================
@@ -432,7 +514,7 @@ public class MenuConsola
     {
         System.out.println(
             "Ahora vamos a realizar un Análisis automático del archivo\n"
-            + "¿Qué tipo de análisis deseas realizar?"
+                + "¿Qué tipo de análisis deseas realizar?"
                 + "\n[1] - Análisis Rápido"
                 + "\n[2] - Análisis Profundo"
                 + "\n[3] - Análisis Heurístico");

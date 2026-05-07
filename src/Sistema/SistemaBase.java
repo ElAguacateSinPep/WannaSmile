@@ -5,6 +5,8 @@ public class SistemaBase implements Sistema
     // ------------------------------- Atributos
     // [VULNERABILIDAD] El ÚNICO atributo real guardado en memoria
     public String arquitectura;
+    public final int AUMENTO_SIGILO = 10;
+    public final int DECREMENTO_SIGILO = -10;
 
     // --------------------------- Constructores
     public SistemaBase()

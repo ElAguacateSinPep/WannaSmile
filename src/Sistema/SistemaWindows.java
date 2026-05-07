@@ -43,23 +43,23 @@ public class SistemaWindows extends SistemaBase
         if(menu.alertaAceptarPermisos() == 1)
         {
             menu.verAumentoSigilo();
-            variacionSigilo += 10;
+            variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
             menu.verDisminucionSigilo();
-            variacionSigilo -= 10;
+            variacionSigilo += DECREMENTO_SIGILO;
         }
 
         if(menu.alertaIgnorarAdvertencia() == 1)
         {
             menu.verAumentoSigilo();
-            variacionSigilo += 10;
+            variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
             menu.verDisminucionSigilo();
-            variacionSigilo -= 10;
+            variacionSigilo += DECREMENTO_SIGILO;
         }
 
         return variacionSigilo;

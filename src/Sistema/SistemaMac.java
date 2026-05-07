@@ -43,23 +43,23 @@ public class SistemaMac extends SistemaBase
         if(menu.alertaAbrirArchivoNoVerificado() == 1)
         {
             menu.verAumentoSigilo();
-            variacionSigilo += 10;
+            variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
             menu.verDisminucionSigilo();
-            variacionSigilo -= 10;
+            variacionSigilo += DECREMENTO_SIGILO;
         }
 
         if(menu.alertaSegundoPlano() == 1)
         {
             menu.verAumentoSigilo();
-            variacionSigilo += 10;
+            variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
             menu.verDisminucionSigilo();
-            variacionSigilo -= 10;
+            variacionSigilo += DECREMENTO_SIGILO;
         }
 
         return variacionSigilo;

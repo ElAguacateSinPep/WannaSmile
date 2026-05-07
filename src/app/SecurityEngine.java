@@ -2,6 +2,7 @@ package app;
 
 import malware.*;
 import sistema.*;
+import utils.Utils;
 import defensa.Antivirus;
 import gui.*;
 
@@ -64,7 +65,7 @@ public class SecurityEngine
 
         // Se inicializa el antivirus
         // todo descomentar esta línea para presentar
-        // esperar(3000);
+        // Utils.esperar(3000);
 
         antivirus.setMalware(malwareAtacante);
         antivirus.setSistema(sistemaDefensa);
@@ -172,17 +173,5 @@ public class SecurityEngine
             AsciiArtManager.imprimirRansomware();
         else if (tipo.contains("Keylogger"))
             AsciiArtManager.imprimirKeylogger();
-    }
-
-    private void esperar(int milisegundos)
-    {
-        try
-        {
-            Thread.sleep(milisegundos);
-        }
-        catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
     }
 }
