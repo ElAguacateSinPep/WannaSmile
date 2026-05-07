@@ -4,11 +4,15 @@ import gui.MenuConsola;
 
 public class SistemaWindows extends SistemaBase
 {
+    // ------------------------------- Atributos
+    MenuConsola menu = new MenuConsola();
+
     // --------------------------- Constructores
     public SistemaWindows()
     {
         this.arquitectura = "x64";
     }
+
     // --------------------------------- Getters
     @Override
     public String getNombre()
@@ -40,7 +44,7 @@ public class SistemaWindows extends SistemaBase
         MenuConsola menu = new MenuConsola();
         int variacionSigilo = 0;
 
-        if(menu.alertaAceptarPermisos() == 1)
+        if (menu.alertaAceptarPermisos() == 1)
         {
             menu.verAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
@@ -51,7 +55,7 @@ public class SistemaWindows extends SistemaBase
             variacionSigilo += DECREMENTO_SIGILO;
         }
 
-        if(menu.alertaIgnorarAdvertencia() == 1)
+        if (menu.alertaIgnorarAdvertencia() == 1)
         {
             menu.verAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
@@ -63,5 +67,46 @@ public class SistemaWindows extends SistemaBase
         }
 
         return variacionSigilo;
+    }
+
+    @Override
+    public int ejecutarProtocoloContencion()
+    {
+        int variacionContencion = 0;
+
+        if(menu.alertaSeguridad() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        if(menu.alertaArchivoDesconocido() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        if(menu.alertaWindowsFirewall() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        return variacionContencion;
     }
 }

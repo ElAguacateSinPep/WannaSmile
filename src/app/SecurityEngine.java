@@ -101,6 +101,7 @@ public class SecurityEngine
             int opcionElegida = menu.imprimirMalwareSistemaObjetivo();
             this.malwareAtacante = new SODecorator(this.malwareAtacante, opcionElegida);
         }
+        // todo mover a menuconsola
         System.out.println("[+] Malware listo en memoria.");
     }
 
@@ -135,12 +136,13 @@ public class SecurityEngine
             this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa, puntosDeteccionContencion);
             this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa, puntosDeteccionContencion);
         }
+        // todo mover a menu consola
         System.out.println("[+] Sistema de defensa desplegado.");
     }
 
+    // todo mover a menu consola
     private void MostrarCreacion()
     {
-
         System.out.println("\n========================================");
         System.out.println("       ESTADO FINAL DE LA CREACIÓN");
         System.out.println("========================================");

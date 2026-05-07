@@ -4,11 +4,15 @@ import gui.MenuConsola;
 
 public class SistemaLinux extends SistemaBase
 {
+    // ------------------------------- Atributos
+    MenuConsola menu = new MenuConsola();
+
     // --------------------------- Constructores
     public SistemaLinux()
     {
         this.arquitectura = "x86";
     }
+
     // --------------------------------- Getters
     @Override
     public String getNombre()
@@ -37,10 +41,9 @@ public class SistemaLinux extends SistemaBase
     @Override
     public int ejecutarAnalisisManual()
     {
-        MenuConsola menu = new MenuConsola();
         int variacionSigilo = 0;
 
-        if(menu.alertaFirewall() == 1)
+        if (menu.alertaFirewall() == 1)
         {
             menu.verDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
@@ -51,7 +54,7 @@ public class SistemaLinux extends SistemaBase
             variacionSigilo += AUMENTO_SIGILO;
         }
 
-        if(menu.alertaSODesactualizado() == 1)
+        if (menu.alertaSODesactualizado() == 1)
         {
             menu.verDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
@@ -62,16 +65,47 @@ public class SistemaLinux extends SistemaBase
             variacionSigilo += AUMENTO_SIGILO;
         }
 
-        if(menu.alertaConexion() == 1)
+        if (menu.alertaConexion() == 1)
         {
             menu.verAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
         }
         else
         {
+            menu.verDisminucionSigilo();
             variacionSigilo += DECREMENTO_SIGILO;
         }
 
         return variacionSigilo;
+    }
+
+    @Override
+    public int ejecutarProtocoloContencion()
+    {
+        int variacionContencion = 0;
+
+        if(menu.alertaSudo() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        if(menu.alertaPropagacionSisArchivos() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        return variacionContencion;
     }
 }

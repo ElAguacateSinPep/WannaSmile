@@ -34,7 +34,7 @@ public class Antivirus
         if (analizarArchivo())
         {
             menu.malwareDetectado();
-            responder();
+            responderAnteIncidentes();
         }
 
         // Comportamiento común TEMPALTE METHOD
@@ -70,17 +70,48 @@ public class Antivirus
         menu.verStatsAnalisis(deteccion, sigilo);
         // Inicio Análisis Automático
 
-        return deteccion > sigilo;
+        // todo Actualizar estado
+        // todo delegar a mostrar resultado
+        if (deteccion < sigilo)
+        {
+            System.out.println(MenuConsola.AMARILLO
+                + "DEBUG CASO I: Jugador 2 ha perdido.\n"
+                + "Amenaza no detectada y sistema infectado."); // todo debug
+        }
+
+        return deteccion >= sigilo;
     }
 
-    private void responder()
+    private void responderAnteIncidentes()
     {
+        int contencion = sistema.getContencion();
+        int propagacion = malware.getPropagacion();
 
+        menu.verStatsRespuesta(propagacion, contencion);
+
+        menu.inicioRespuesta();
+        contencion += sistema.ejecutarProtocoloContencion();
+        contencion = ajustarStats(contencion);
+        menu.verStatsRespuesta(propagacion, contencion);
+
+        // todo Actualizar estado
+        if (contencion < propagacion)
+        {
+            System.out.println(MenuConsola.AMARILLO
+                + "DEBUG CASO II: Jugador 2 ha perdido.\n"
+                + "Amenaza detectada pero sistema infectado."); // todo debug
+        }
+        else if (contencion >= propagacion)
+        {
+            System.out.println(MenuConsola.AMARILLO
+                + "DEBUG CASO III: Jugador 2 ha ganado.\n"
+                + "Amenaza detectada y neutralizada."); // todo debug
+        }
     }
 
     private void mostrarResultado()
     {
-
+        // todo estado: toString
     }
 
     private void setAnalisisStrategy()
@@ -104,8 +135,8 @@ public class Antivirus
 
     /**
      * @brief asegura que no nos encontrames:
-     * - valores negativos
-     *-  valores superiores a 100
+     *        - valores negativos
+     *        - valores superiores a 100
      * @param valor
      * @return
      */
@@ -113,7 +144,7 @@ public class Antivirus
     {
         if (valor > 100)
             return 100;
-        else if(valor < 0)
+        else if (valor < 0)
             return 0;
         else
             return valor;

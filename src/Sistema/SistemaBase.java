@@ -4,9 +4,11 @@ public class SistemaBase implements Sistema
 {
     // ------------------------------- Atributos
     // [VULNERABILIDAD] El ÚNICO atributo real guardado en memoria
-    public String arquitectura;
-    public final int AUMENTO_SIGILO = 10;
-    public final int DECREMENTO_SIGILO = -10;
+    public String    arquitectura;
+    public final int AUMENTO_SIGILO        = 10;
+    public final int DECREMENTO_SIGILO     = -10;
+    public final int AUMENTO_CONTENCION    = 20;
+    public final int DECREMENTO_CONTENCION = -20;
 
     // --------------------------- Constructores
     public SistemaBase()
@@ -47,6 +49,12 @@ public class SistemaBase implements Sistema
 
     @Override
     public int ejecutarAnalisisManual()
+    {
+        return 0;
+    }
+
+    @Override
+    public int ejecutarProtocoloContencion()
     {
         return 0;
     }

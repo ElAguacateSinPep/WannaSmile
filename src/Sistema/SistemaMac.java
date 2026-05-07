@@ -4,11 +4,15 @@ import gui.MenuConsola;
 
 public class SistemaMac extends SistemaBase
 {
+    // ------------------------------- Atributos
+    MenuConsola menu = new MenuConsola();
+
     // --------------------------- Constructores
     public SistemaMac()
     {
         this.arquitectura = "ARM";
     }
+
     // --------------------------------- Getters
     @Override
     public String getNombre()
@@ -40,7 +44,7 @@ public class SistemaMac extends SistemaBase
         MenuConsola menu = new MenuConsola();
         int variacionSigilo = 0;
 
-        if(menu.alertaAbrirArchivoNoVerificado() == 1)
+        if (menu.alertaAbrirArchivoNoVerificado() == 1)
         {
             menu.verAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
@@ -51,7 +55,7 @@ public class SistemaMac extends SistemaBase
             variacionSigilo += DECREMENTO_SIGILO;
         }
 
-        if(menu.alertaSegundoPlano() == 1)
+        if (menu.alertaSegundoPlano() == 1)
         {
             menu.verAumentoSigilo();
             variacionSigilo += AUMENTO_SIGILO;
@@ -63,5 +67,46 @@ public class SistemaMac extends SistemaBase
         }
 
         return variacionSigilo;
+    }
+
+    @Override
+    public int ejecutarProtocoloContencion()
+    {
+        int variacionContencion = 0;
+
+        if(menu.alertaPuertoLocal() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        if(menu.alertaAccesoFinder() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        if(menu.alertaItemsInicio() == 1)
+        {
+            menu.verDisminucionContencion();
+            variacionContencion += DECREMENTO_CONTENCION;
+        }
+        else
+        {
+            menu.verAumentoContencion();
+            variacionContencion += AUMENTO_CONTENCION;
+        }
+
+        return variacionContencion;
     }
 }

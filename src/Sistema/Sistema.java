@@ -8,4 +8,5 @@ public interface Sistema
     int getDeteccion();
     int getContencion();
     int ejecutarAnalisisManual();
+    int ejecutarProtocoloContencion();
 }

@@ -164,7 +164,9 @@ public class MenuConsola
             "\n[!] Defensa configurada. Pasando automáticamente a la configuración de Amenaza...");
     }
 
-    // Inicio Antivirus
+    // ====================================================
+    // Antivirus
+    // ====================================================
 
     public void antivirusArchivoDetectado()
     {
@@ -175,10 +177,27 @@ public class MenuConsola
                 ║                ⚠ ANTIVIRUS: ADVERTENCIA ⚠               ║
                 ╠═════════════════════════════════════════════════════════╣
                 ║  Nuevo archivo desconocido detectado                    ║
-                ║  Iniciando protocolo de respuesta anti-incidentes...    ║
+                ║  Iniciando protocolo de respuesta ante incidentes...    ║
                 ╚═════════════════════════════════════════════════════════╝
                 """);
         System.out.print(RESET);
+    }
+
+    public void malwareDetectado()
+    {
+        System.out.print(AMARILLO);
+        System.out.println(
+            """
+                ╔═════════════════════════════════════════════════════════╗
+                ║                  ⚠ ANTIVIRUS: ALERTA ⚠                  ║
+                ╠═════════════════════════════════════════════════════════╣
+                ║  El archivo descargado contiene software malicioso      ║
+                ║  Iniciando protocolo de contención                      ║
+                ║                                                         ║
+                ║  Estado del sistema: Muy mal                            ║
+                ╚═════════════════════════════════════════════════════════╝
+                """);
+        System.out.println(RESET);
     }
 
     public void inicioAnalisisManual()
@@ -191,8 +210,13 @@ public class MenuConsola
         System.out.println("--- ANALISIS AUTOMATICO ---");
     }
 
+    public void inicioRespuesta()
+    {
+        System.out.println("--- Respuesta ante incidentes ---");
+    }
+
     // ====================================================
-    // Anlálisis > config manual > windows
+    // Anlálisis > config manual
     // ====================================================
 
     public void verStatsAnalisis(int deteccion, int sigilo)
@@ -201,6 +225,19 @@ public class MenuConsola
         System.out.println("║ DETECCION = " + deteccion + " | SIGILO = " + sigilo + " ║\n");
         System.out.println(RESET);
     }
+
+    public void verAumentoSigilo()
+    {
+        System.out.println(ROJO + "+ 10 Sigilo\n" + RESET);
+    }
+
+    public void verDisminucionSigilo()
+    {
+        System.out.println(VERDE + "- 10 Sigilo\n" + RESET);
+    }
+
+    // ====================================================
+    // Anlálisis > config manual > windows
 
     public int alertaAceptarPermisos()
     {
@@ -228,7 +265,9 @@ public class MenuConsola
         return opcion;
     }
 
+    // ====================================================
     // Anlálisis > config manual > mac
+
     public int alertaAbrirArchivoNoVerificado()
     {
         System.out.println(
@@ -255,6 +294,7 @@ public class MenuConsola
         return opcion;
     }
 
+    // ====================================================
     // Anlálisis > config manual > linux
 
     public int alertaFirewall()
@@ -287,30 +327,13 @@ public class MenuConsola
     {
         System.out.println(
             "PortDaemon ha bloqueado una conexión sospechosa."
-                + "\n ¿Permitirla manualmente?"
+                + "\n¿Permitirla manualmente?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
         return opcion;
-    }
-
-    public void malwareDetectado()
-    {
-        System.out.print(AMARILLO);
-        System.out.println(
-            """
-                ╔═════════════════════════════════════════════════════════╗
-                ║                  ⚠ ANTIVIRUS: ALERTA ⚠                  ║
-                ╠═════════════════════════════════════════════════════════╣
-                ║  El archivo descargado contiene software malicioso      ║
-                ║  Iniciando protocolo de contención                      ║
-                ║                                                         ║
-                ║  Estado del sistema: Muy mal                            ║
-                ╚═════════════════════════════════════════════════════════╝
-                """);
-        System.out.println(RESET);
     }
 
     // ====================================================
@@ -341,7 +364,8 @@ public class MenuConsola
         // todo descomentar para presentar
         // Utils.esperar(800);
 
-        System.out.println("[ Analisis Profundo ] Revisando procesos, memoria y actividad sospechosa......");
+        System.out.println(
+            "[ Analisis Profundo ] Revisando procesos, memoria y actividad sospechosa......");
         // todo descomentar para presentar
         // Utils.esperar(800);
         System.out.println("[ INFO ] Escaneo avanzado completado.");
@@ -357,13 +381,16 @@ public class MenuConsola
         // todo descomentar para presentar
         // Utils.esperar(800);
 
-        System.out.println("[ Analisis Heurístico ] Analizando patrones de comportamiento desconocidos...");
+        System.out.println(
+            "[ Analisis Heurístico ] Analizando patrones de comportamiento desconocidos...");
         // todo descomentar para presentar
         // Utils.esperar(800);
-        System.out.println("[ Analisis Heurístico ] Comparando actividad del archivo con amenazas registradas..");
+        System.out.println(
+            "[ Analisis Heurístico ] Comparando actividad del archivo con amenazas registradas..");
         // todo descomentar para presentar
         // Utils.esperar(800);
-        System.out.println("[ Analisis Heurístico ] Detectando anomalías en tiempo de ejecución...");
+        System.out
+            .println("[ Analisis Heurístico ] Detectando anomalías en tiempo de ejecución...");
         // todo descomentar para presentar
         // Utils.esperar(800);
         System.out.println("[ INFO ] Escaneo Heurístico completado.");
@@ -387,18 +414,29 @@ public class MenuConsola
     }
 
     // ====================================================
-    // Respuesta ante incidentes > windows
+    // Respuesta ante incidentes
     // ====================================================
 
-    public void verAumentoSigilo()
+    public void verStatsRespuesta(int propagacion, int contencion)
     {
-        System.out.println(ROJO + "+ 10 Sigilo\n" + RESET);
+        System.err.println(MORADO);
+        System.out
+            .println("║ CONTENCION = " + contencion + " | PROPAGACION = " + propagacion + " ║\n");
+        System.out.println(RESET);
     }
 
-    public void verDisminucionSigilo()
+    public void verAumentoContencion()
     {
-        System.out.println(VERDE + "- 10 Sigilo\n" + RESET);
+        System.out.println(VERDE + "+ 20 Contencion\n" + RESET);
     }
+
+    public void verDisminucionContencion()
+    {
+        System.out.println(ROJO + "- 20 Contencion\n" + RESET);
+    }
+
+    // ====================================================
+    // Respuesta ante incidentes > windows
 
     public int alertaSeguridad()
     {
@@ -440,6 +478,7 @@ public class MenuConsola
         return opcion;
     }
 
+    // ====================================================
     // Respuesta ante incidentes > mac
 
     public int alertaPuertoLocal()
@@ -481,6 +520,7 @@ public class MenuConsola
         return opcion;
     }
 
+    // ====================================================
     // Respuesta ante incidentes > linux
 
     public int alertaSudo()
@@ -523,6 +563,10 @@ public class MenuConsola
         System.out.println();
         return opcion;
     }
+
+    // ====================================================
+    // Entrada de datos
+    // ====================================================
 
     // Pide un número y obliga al usuario a que esté entre el MIN y el MAX
     private int pedirOpcion(int min, int max)
