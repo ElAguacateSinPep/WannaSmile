@@ -6,6 +6,11 @@ public class MenuConsola
 {
     // ------------------------------- Atributos
     private Scanner sc;
+    public static final String ROJO = "\u001B[31m";
+    public static final String VERDE = "\u001B[32m";
+    public static final String AMARILLO = "\u001B[33m";
+    public static final String AZUL = "\u001B[34m";
+    public static final String RESET = "\u001B[0m";
 
     // --------------------------- Constructores
     public MenuConsola()
@@ -51,8 +56,13 @@ public class MenuConsola
     {
         System.out.println("\n--- CONFIGURACIÓN DE DEFENSA ---");
         System.out.println("Selecciona el sistema operativo objetivo:");
-        System.out
-            .println("[1] Windows (Dell XPS)\n[2] macOS (Macbook Pro M5)\n[3] Linux (Thinkpad)");
+        System.out.println("┌────────────────────────────┬─────────────┬──────────────┐");
+        System.out.println("|           Nombre           |  Detección  |  Contención  |");
+        System.out.println("├────────────────────────────┼─────────────┼──────────────┤");
+        System.out.println("| [1] Windows (Dell XPS)     |     20      |      80      |");
+        System.out.println("| [2] macOS (Macbook Pro M5) |     50      |      50      |");
+        System.out.println("| [3] Linux (Thinkpad)       |     75      |      25      |");
+        System.out.println("└────────────────────────────┴─────────────┴──────────────┘");
         System.out.print("-> Elige un sistema: ");
         return pedirOpcion(1, 3);
     }
@@ -61,7 +71,14 @@ public class MenuConsola
     {
         System.out.println("\n--- CONFIGURACIÓN DE AMENAZA ---");
         System.out.println("Selecciona el vector de ataque base:");
-        System.out.println("[1] Zeus(Troyano)\n[2] Ryuk(Ransomware)\n[3] Emotet(Keylogger)\n");
+        System.out.println("");
+        System.out.println("┌───────────────────────┬────────────┬─────────────────┐");
+        System.out.println("|         Nombre        |   Sigilo   |   Propagación   |");
+        System.out.println("├───────────────────────┼────────────┼─────────────────┤");
+        System.out.println("| [1] Zeus(Troyano)     |     20     |        80       |");
+        System.out.println("| [2] Ryuk(Ransomware)  |     50     |        50       |");
+        System.out.println("| [3] Emotet(Keylogger) |     80     |        20       |");
+        System.out.println("└───────────────────────┴────────────┴─────────────────┘");
         System.out.print("-> Elige un malware: ");
         return pedirOpcion(1, 3);
     }
@@ -145,7 +162,36 @@ public class MenuConsola
             "\n[!] Defensa configurada. Pasando automáticamente a la configuración de Amenaza...");
     }
 
+    // Inicio Antivirus
+
+    public void antivirusArchivoDetectado()
+    {
+        System.out.println(AMARILLO);
+        System.out.println(
+            """
+            ╔═════════════════════════════════════════════════════════╗
+            ║                ⚠ ANTIVIRUS: ADVERTENCIA ⚠               ║
+            ╠═════════════════════════════════════════════════════════╣
+            ║  Nuevo archivo desconocido detectado                    ║
+            ║  Iniciando protocolo de respuesta anti-incidentes...    ║
+            ╚═════════════════════════════════════════════════════════╝
+            """);
+         System.out.println(RESET);
+    }
+
+    public void inicioAnalisisManual()
+    {
+        System.out.println("--- ANALISIS MANUAL ---");
+    }
+
+    public void inicioAnalisisAutomatico()
+    {
+        System.out.println("--- ANALISIS AUTOMATICO ---");
+    }
+
+    // ====================================================
     // Anlálisis > config manual > windows
+    // ====================================================
 
     public int alertaAceptarPermisos()
     {
@@ -154,7 +200,10 @@ public class MenuConsola
                 + "\n¿Permitir?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaIgnorarAdvertencia()
@@ -164,7 +213,10 @@ public class MenuConsola
                 + "\n¿Ignorar advertencia?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     // Anlálisis > config manual > mac
@@ -175,7 +227,10 @@ public class MenuConsola
                 + "\n¿Abrir igualmente?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaSegundoPlano()
@@ -185,7 +240,10 @@ public class MenuConsola
                 + "\n¿Permitir?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     // Anlálisis > config manual > linux
@@ -197,7 +255,10 @@ public class MenuConsola
                 + "\n¿Deseas activarlo?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaSODesactualizado()
@@ -207,7 +268,10 @@ public class MenuConsola
                 + "\n¿Deseas actualizar a la última versión?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaConexion()
@@ -217,10 +281,42 @@ public class MenuConsola
                 + "\n ¿Permitirla manualmente?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
+    public void malwareDetectado()
+    {
+        System.out.println(AMARILLO);
+        System.out.println(
+            """
+            ╔═════════════════════════════════════════════════════════╗
+            ║                  ⚠ ANTIVIRUS: ALERTA ⚠                  ║
+            ╠═════════════════════════════════════════════════════════╣
+            ║  El archivo descargado contiene software malicioso      ║
+            ║  Iniciando protocolo de contención                      ║
+            ║                                                         ║
+            ║  Estado del sistema: Muy mal                            ║
+            ╚═════════════════════════════════════════════════════════╝
+            """);
+         System.out.println(RESET);
+    }
+
+    // ====================================================
     // Respuesta ante incidentes > windows
+    // ====================================================
+
+    public void verAumentoSigilo()
+    {
+        System.out.println(ROJO + "+ 10 Sigilo\n" + RESET);
+    }
+
+    public void verDisminucionSigilo()
+    {
+        System.out.println(VERDE + "- 10 Sigilo\n" + RESET);
+    }
 
     public int alertaSeguridad()
     {
@@ -229,7 +325,10 @@ public class MenuConsola
                 + "\n¿Ejecutar?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaArchivoDesconocido()
@@ -239,7 +338,10 @@ public class MenuConsola
                 + "\n¿Permitir acceso?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaWindowsFirewall()
@@ -249,8 +351,11 @@ public class MenuConsola
                 + "\n¿Permitirla manualmente?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
+        System.out.print("-> Elige una opción: ");
 
-        return pedirOpcion(1, 2);
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     // Respuesta ante incidentes > mac
@@ -262,7 +367,10 @@ public class MenuConsola
                 + "\n¿Permitir apertura de puerto?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaAccesoFinder()
@@ -272,7 +380,10 @@ public class MenuConsola
                 + "\n¿Permitir acceso completo?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaItemsInicio()
@@ -282,7 +393,10 @@ public class MenuConsola
                 + "\n¿Proceder?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     // Respuesta ante incidentes > linux
@@ -294,7 +408,10 @@ public class MenuConsola
                 + "\n¿Introducir contraseña?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     public int alertaPropagacionSisArchivos()
@@ -304,7 +421,10 @@ public class MenuConsola
                 + "\n¿Permitir?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
-        return pedirOpcion(1, 2);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 2);
+        System.out.println();
+        return opcion;
     }
 
     // Seleccionar estrategia de análisis
@@ -312,11 +432,14 @@ public class MenuConsola
     {
         System.out.println(
             "Ahora vamos a realizar un Análisis automático del archivo\n"
-            + "¿Qué tipo de análisis deseas realizar?\n"
+            + "¿Qué tipo de análisis deseas realizar?"
                 + "\n[1] - Análisis Rápido"
                 + "\n[2] - Análisis Profundo"
                 + "\n[3] - Análisis Heurístico");
-        return pedirOpcion(1, 3);
+        System.out.print("-> Elige una opción: ");
+        int opcion = pedirOpcion(1, 3);
+        System.out.println();
+        return opcion;
     }
 
     // Pide un número y obliga al usuario a que esté entre el MIN y el MAX

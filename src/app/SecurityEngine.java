@@ -2,6 +2,7 @@ package app;
 
 import malware.*;
 import sistema.*;
+import defensa.Antivirus;
 import gui.*;
 
 public class SecurityEngine
@@ -15,13 +16,14 @@ public class SecurityEngine
 
     private Malware               malwareAtacante;
     private Sistema               sistemaDefensa;
-    private 
+    private Antivirus             antivirus;
     // --------------------------- Constructores
     private SecurityEngine()
     {
         this.menu = new MenuConsola();
         this.malwareFactory = new MalwareFactory();
         this.sistemaFactory = new SistemaFactory();
+        this.antivirus = new Antivirus();
     }
     // ------------------------ Métodos Públicos
     public static SecurityEngine getInstance()
@@ -40,7 +42,7 @@ public class SecurityEngine
         AsciiArtManager.imprimirhappyface();
         AsciiArtManager.imprimirLogoPrincipal();
 
-        // 1. Elegir orden de creación
+        // Elegir orden de creación
         int eleccion = menu.ImprimirMenuPrincipal();
 
         if (eleccion == 1)
@@ -55,9 +57,20 @@ public class SecurityEngine
             menu.imprimirTransicionAMalware();
             configurarMalware();
         }
+
         // Aqui se accede a la arquiterura de sistema y se le pasa a malware
         this.malwareAtacante.setObjetivo(this.sistemaDefensa);
         MostrarCreacion();
+
+        // Se inicializa el antivirus
+        // todo descomentar esta línea para presentar
+        // esperar(3000);
+
+        antivirus.setMalware(malwareAtacante);
+        antivirus.setSistema(sistemaDefensa);
+        menu.antivirusArchivoDetectado();
+
+        antivirus.protocoloAntiIndicentes();
     }
     // ------------------------ Métodos Privados
     private void configurarMalware()
@@ -159,5 +172,17 @@ public class SecurityEngine
             AsciiArtManager.imprimirRansomware();
         else if (tipo.contains("Keylogger"))
             AsciiArtManager.imprimirKeylogger();
+    }
+
+    private void esperar(int milisegundos)
+    {
+        try
+        {
+            Thread.sleep(milisegundos);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package antivirus;
+package defensa;
 
 public interface EstadoSistema {
 

@@ -25,13 +25,13 @@ public class SistemaWindows extends SistemaBase
     @Override
     public int getDeteccion()
     {
-        return 60;
+        return 20;
     }
 
     @Override
     public int getContencion()
     {
-        return 40;
+        return 80;
     }
 
     @Override
@@ -41,14 +41,26 @@ public class SistemaWindows extends SistemaBase
         int variacionSigilo = 0;
 
         if(menu.alertaAceptarPermisos() == 1)
+        {
+            menu.verAumentoSigilo();
             variacionSigilo += 10;
+        }
         else
+        {
+            menu.verDisminucionSigilo();
             variacionSigilo -= 10;
+        }
 
-        if(menu.alertaSegundoPlano() == 1)
+        if(menu.alertaIgnorarAdvertencia() == 1)
+        {
+            menu.verAumentoSigilo();
             variacionSigilo += 10;
+        }
         else
+        {
+            menu.verDisminucionSigilo();
             variacionSigilo -= 10;
+        }
 
         return variacionSigilo;
     }

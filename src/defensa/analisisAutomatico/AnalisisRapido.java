@@ -1,14 +1,14 @@
-package antivirus.analisis;
+package defensa.analisisAutomatico;
 
-import antivirus.AnalisisStrategy;
+import defensa.AnalisisStrategy;
 
-public class AnalisisProfundo implements AnalisisStrategy
+public class AnalisisRapido implements AnalisisStrategy
 {
     // ------------------------ Métodos Públicos
     public int ejecutarAnalisisAutomatico()
     {
         int variacionDeteccion = 0;
-        variacionDeteccion += 30;
+        variacionDeteccion -= 10;
         return variacionDeteccion;
     }
 }

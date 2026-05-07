@@ -1,4 +1,4 @@
-package antivirus.estados;
+package defensa.estados;
 
 public class EstadoAmenazado {
 
