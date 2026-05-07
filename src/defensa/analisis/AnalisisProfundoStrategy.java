@@ -1,9 +1,9 @@
-package defensa.analisisAutomatico;
+package defensa.analisis;
 
 import defensa.AnalisisStrategy;
 import gui.MenuConsola;
 
-public class AnalisisProfundo implements AnalisisStrategy
+public class AnalisisProfundoStrategy implements AnalisisStrategy
 {
     // ------------------------ Métodos Públicos
     public int ejecutarAnalisisAutomatico()

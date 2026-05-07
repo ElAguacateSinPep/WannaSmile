@@ -1,8 +1,11 @@
 package defensa;
 
-import defensa.analisisAutomatico.AnalisisHeuristico;
-import defensa.analisisAutomatico.AnalisisProfundo;
-import defensa.analisisAutomatico.AnalisisRapido;
+import defensa.analisis.AnalisisHeuristicoStrategy;
+import defensa.analisis.AnalisisProfundoStrategy;
+import defensa.analisis.AnalisisRapidoStrategy;
+import defensa.estados.AmenazaDetectada;
+import defensa.estados.NoDetectadoState;
+import defensa.estados.SeguroState;
 import gui.MenuConsola;
 import malware.*;
 import sistema.*;
@@ -13,6 +16,12 @@ public class Antivirus
     private Malware          malware;
     private Sistema          sistema;
     private AnalisisStrategy analisisStrategy;
+    private AntivirusState   state;
+
+    public Antivirus()
+    {
+        this.state = new SeguroState();
+    }
 
     // --------------------------------- Setters
     public void setMalware(Malware malware)
@@ -23,6 +32,11 @@ public class Antivirus
     public void setSistema(Sistema sistema)
     {
         this.sistema = sistema;
+    }
+
+    public void setEstado(AntivirusState state)
+    {
+        this.state = state;
     }
 
     // ------------------------ Métodos Públicos
@@ -44,73 +58,75 @@ public class Antivirus
     // ------------------------ Métodos Privados
     private boolean analizarArchivo()
     {
-        int sigilo = malware.getSigilo();
-        int deteccion = sistema.getDeteccion();
+        boolean detectado;
+        int sigilo = this.malware.getSigilo();
+        int deteccion = this.sistema.getDeteccion();
 
         MenuConsola.menu.printStatsAnalisis(deteccion, sigilo);
 
-        // Inicio Análisis Manual
-        // Implementado de manera diferente segun el SO
-        // Afecta a Sigilo del Malware
+        /**
+         * - Análisis Manual
+         * - Implementado de manera diferente segun el SO
+         * - Afecta a Sigilo (Malware)
+         */
         MenuConsola.menu.printInicioAnalisisManual();
-        sigilo += sistema.ejecutarAnalisisManual();
+        sigilo += this.sistema.ejecutarAnalisisManual();
         sigilo = ajustarStats(sigilo);
         MenuConsola.menu.printStatsAnalisis(deteccion, sigilo);
-        // Fin Análisis Manual
 
-        // Inicio Análisis Automático
-        // Puede ser: Rápido, profundo o Heurístico
-        // Depende de la estrategia seleccionada
-        // Afecta a la Detección del Sistema
+        /**
+         * - Análisis Automático.
+         * - Depende de la estrategia, puede ser:
+         * - Rápido
+         * - Profundo
+         * - Heurístico
+         * - Afecta a la Detección (Sistema)
+         */
         MenuConsola.menu.printInicioAnalisisAutomatico();
         setAnalisisStrategy();
-        deteccion += analisisStrategy.ejecutarAnalisisAutomatico();
+        deteccion += this.analisisStrategy.ejecutarAnalisisAutomatico();
         deteccion = ajustarStats(deteccion);
         MenuConsola.menu.printStatsAnalisis(deteccion, sigilo);
-        // Inicio Análisis Automático
 
-        // todo Actualizar estado
-        // todo delegar a mostrar resultado
-        if (deteccion < sigilo)
+        // Resultado análisis
+        if (deteccion >= sigilo) // Malware detectado
         {
-            System.out.println(MenuConsola.AMARILLO
-                + "DEBUG CASO I: Jugador 2 ha perdido.\n"
-                + "Amenaza no detectada y sistema infectado."); // todo debug
+            detectado = true;
+            setEstado(new AmenazaDetectada());
+        }
+        else // Malware NO detectado
+        {
+            detectado = false;
+            setEstado(new NoDetectadoState());
         }
 
-        return deteccion >= sigilo;
+        return detectado;
     }
 
     private void responderAnteIncidentes()
     {
-        int contencion = sistema.getContencion();
-        int propagacion = malware.getPropagacion();
+        int contencion = this.sistema.getContencion();
+        int propagacion = this.malware.getPropagacion();
 
         MenuConsola.menu.printStatsRespuesta(propagacion, contencion);
-
         MenuConsola.menu.printInicioRespuesta();
-        contencion += sistema.ejecutarProtocoloContencion();
+
+        // Protocolo de respuesta, implementado por cada sistema
+        contencion += this.sistema.ejecutarProtocoloContencion();
         contencion = ajustarStats(contencion);
+
         MenuConsola.menu.printStatsRespuesta(propagacion, contencion);
 
-        // todo Actualizar estado
-        if (contencion < propagacion)
+        // Resultado respuesta
+        if (contencion >= propagacion) // Malware Neutralizado
         {
-            System.out.println(MenuConsola.AMARILLO
-                + "DEBUG CASO II: Jugador 2 ha perdido.\n"
-                + "Amenaza detectada pero sistema infectado."); // todo debug
-        }
-        else if (contencion >= propagacion)
-        {
-            System.out.println(MenuConsola.AMARILLO
-                + "DEBUG CASO III: Jugador 2 ha ganado.\n"
-                + "Amenaza detectada y neutralizada."); // todo debug
+            state.avanzarEstado(this);
         }
     }
 
     private void mostrarResultado()
     {
-        // todo estado: toString
+        state.printEstado();
     }
 
     private void setAnalisisStrategy()
@@ -118,22 +134,22 @@ public class Antivirus
         switch (MenuConsola.menu.seleccionarTipoAnalisisAutomatico())
         {
             case 1:
-                analisisStrategy = new AnalisisRapido();
+                this.analisisStrategy = new AnalisisRapidoStrategy();
                 break;
             case 2:
-                analisisStrategy = new AnalisisProfundo();
+                this.analisisStrategy = new AnalisisProfundoStrategy();
                 break;
             case 3:
-                analisisStrategy = new AnalisisHeuristico();
+                this.analisisStrategy = new AnalisisHeuristicoStrategy();
                 break;
             default:
-                analisisStrategy = new AnalisisProfundo();
+                this.analisisStrategy = new AnalisisProfundoStrategy();
                 break;
         }
     }
 
     /**
-     * @brief asegura que no nos encontrames:
+     * @brief asegura que no nos encontraremos:
      *        - valores negativos
      *        - valores superiores a 100
      * @param valor

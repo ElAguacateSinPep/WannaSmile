@@ -1,17 +1,17 @@
-package defensa.analisisAutomatico;
+package defensa.analisis;
 
 import defensa.AnalisisStrategy;
-import gui.MenuConsola;
+import gui.*;
 
-public class AnalisisHeuristico implements AnalisisStrategy
+public class AnalisisRapidoStrategy implements AnalisisStrategy
 {
     // ------------------------ Métodos Públicos
     public int ejecutarAnalisisAutomatico()
     {
         int variacionDeteccion = 0;
 
-        MenuConsola.menu.logsAnalisisHeuristico();
-        variacionDeteccion += 50;
+        MenuConsola.menu.logsAnalisisRaido();
+        variacionDeteccion -= 10;
 
         MenuConsola.menu.printVariacionDeteccion(variacionDeteccion);
 

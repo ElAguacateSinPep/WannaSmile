@@ -212,7 +212,7 @@ public class MenuConsola
                 ║  Estado del sistema: Muy mal                            ║
                 ╚═════════════════════════════════════════════════════════╝
                 """);
-        System.out.println(RESET);
+        System.out.print(RESET);
     }
 
     public void printInicioAnalisisManual()
@@ -392,18 +392,18 @@ public class MenuConsola
     public void logsAnalisisRaido()
     {
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
 
         System.out.println("[ Analisis Rapido ] Escaneando firmas basicas del archivo...");
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
         System.out.println("[ Analisis Rapido ] Verificacion superficial completada.");
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
         System.out.println("[ ADVERTENCIA ] Algunas amenazas avanzadas podrian no detectarse.");
 
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
 
         System.out.println();
     }
@@ -411,16 +411,16 @@ public class MenuConsola
     public void logsAnalisisProfundo()
     {
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
 
         System.out.println(
             "[ Analisis Profundo ] Revisando procesos, memoria y actividad sospechosa......");
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
         System.out.println("[ INFO ] Escaneo avanzado completado.");
 
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
 
         System.out.println();
     }
@@ -428,24 +428,24 @@ public class MenuConsola
     public void logsAnalisisHeuristico()
     {
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
 
         System.out.println(
             "[ Analisis Heurístico ] Analizando patrones de comportamiento desconocidos...");
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
         System.out.println(
             "[ Analisis Heurístico ] Comparando actividad del archivo con amenazas registradas..");
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
         System.out
             .println("[ Analisis Heurístico ] Detectando anomalías en tiempo de ejecución...");
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
         System.out.println("[ INFO ] Escaneo Heurístico completado.");
 
         // todo descomentar para presentar
-        // Utils.esperar(800);
+        Utils.esperar(800);
 
         System.out.println();
     }
@@ -470,6 +470,11 @@ public class MenuConsola
     public void printDisminucionContencion()
     {
         System.out.println(ROJO + "- 20 Contencion\n" + RESET);
+    }
+
+    public void printOperacionNoPermitida()
+    {
+        System.out.println("Operacion no permitida");
     }
 
     // ====================================================
@@ -599,6 +604,62 @@ public class MenuConsola
         int opcion = pedirOpcion(1, 3);
         System.out.println();
         return opcion;
+    }
+
+    // ====================================================
+    // Mostrar Resultado
+    // ====================================================
+
+    public void printAmenazazaNoDetectada()
+    {
+        System.out.println(MenuConsola.ROJO +
+            """
+                ╔══════════════════════════════════════════════════════════════╗
+                ║                     SISTEMA COMPROMETIDO                     ║
+                ╠══════════════════════════════════════════════════════════════╣
+                ║  El malware logró evadir los mecanismos de detección         ║
+                ║  y se infiltró en el sistema sin ser identificado.           ║
+                ║                                                              ║
+                ║  Estado final: INFECTADO                                     ║
+                ╚══════════════════════════════════════════════════════════════╝
+                """ + MenuConsola.RESET);
+        AsciiArtManager.printSistemaInfectado();
+    }
+
+    public void printAmenazaDetectadaSistemaInfectado()
+    {
+        System.out.println(MenuConsola.AMARILLO +
+            """
+                ╔══════════════════════════════════════════════════════════════╗
+                ║                   CONTENCIÓN INSUFICIENTE                    ║
+                ╠══════════════════════════════════════════════════════════════╣
+                ║  La amenaza fue detectada correctamente,                     ║
+                ║  pero el protocolo de respuesta no logró detenerla.          ║
+                ║                                                              ║
+                ║  El malware continúa propagándose por el sistema.            ║
+                ║                                                              ║
+                ║  Estado final: INFECTADO                                     ║
+                ╚══════════════════════════════════════════════════════════════╝
+                """ + MenuConsola.RESET);
+        AsciiArtManager.printSistemaInfectado();
+    }
+
+    public void printAmenazaDetectadaNeutralizada()
+    {
+        System.out.println(MenuConsola.VERDE +
+            """
+                ╔═════════════════════════════════════════════════════╗
+                ║                 AMENAZA NEUTRALIZADA                ║
+                ╠═════════════════════════════════════════════════════╣
+                ║  El antivirus detectó y contuvo el malware          ║
+                ║  antes de que pudiera comprometer el sistema.       ║
+                ║                                                     ║
+                ║  Todos los procesos maliciosos han sido eliminados. ║
+                ║                                                     ║
+                ║  Estado final: SEGURO                               ║
+                ╚═════════════════════════════════════════════════════╝
+                """ + MenuConsola.RESET);
+        AsciiArtManager.printEscudoSistemaSeguro();
     }
 
     // ====================================================

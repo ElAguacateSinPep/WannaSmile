@@ -67,7 +67,7 @@ public class SecurityEngine
 
         // Se inicializa el antivirus
         // todo descomentar esta línea para presentar
-        // Utils.esperar(3000);
+        Utils.esperar(3000);
 
         antivirus.setMalware(malwareAtacante);
         antivirus.setSistema(sistemaDefensa);
@@ -112,7 +112,8 @@ public class SecurityEngine
      * todo configurarSistema es el nuevo metodo
      * todo configurarSistemaAntes es el antiguo
      *
-     * todo configurarSistemaAntes no deja hacer analisis y respuesta segun SO. ver por que
+     * todo configurarSistemaAntes no deja hacer analisis y respuesta segun SO. ver
+     * por que
      * todo comporbar que configurarSistema funciona bien
      *
      * todo dejar solo uno de los 2
