@@ -9,20 +9,13 @@ import utils.Utils;
 public class MenuConsola
 {
     // ------------------------------- Atributos
-    private Scanner            sc;
+    private Scanner            sc       = new Scanner(System.in);
     public static final String ROJO     = "\u001B[31m";
     public static final String VERDE    = "\u001B[32m";
     public static final String AMARILLO = "\u001B[33m";
     public static final String MORADO   = "\u001B[35m";
     public static final String RESET    = "\u001B[0m";
-
-    // --------------------------- Constructores
-    public MenuConsola()
-    {
-        this.sc = new Scanner(System.in);
-    }
-
-    
+    public static MenuConsola  menu     = new MenuConsola();
 
     // ------------------------ Métodos Públicos
 

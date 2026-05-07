@@ -8,13 +8,12 @@ public class AnalisisProfundo implements AnalisisStrategy
     // ------------------------ Métodos Públicos
     public int ejecutarAnalisisAutomatico()
     {
-        MenuConsola menu = new MenuConsola();
         int variacionDeteccion = 0;
 
-        menu.logsAnalisisProfundo();
+        MenuConsola.menu.logsAnalisisProfundo();
         variacionDeteccion += 10;
 
-        menu.printVariacionDeteccion(variacionDeteccion);
+        MenuConsola.menu.printVariacionDeteccion(variacionDeteccion);
 
         return variacionDeteccion;
     }

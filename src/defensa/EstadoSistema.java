@@ -1,5 +1,6 @@
 package defensa;
 
-public interface EstadoSistema {
+public interface EstadoSistema
+{
 
 }

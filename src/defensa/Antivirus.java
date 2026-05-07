@@ -13,7 +13,6 @@ public class Antivirus
     private Malware          malware;
     private Sistema          sistema;
     private AnalisisStrategy analisisStrategy;
-    private MenuConsola      menu = new MenuConsola();
 
     // --------------------------------- Setters
     public void setMalware(Malware malware)
@@ -33,7 +32,7 @@ public class Antivirus
     {
         if (analizarArchivo())
         {
-            menu.printMalwareDetectado();
+            MenuConsola.menu.printMalwareDetectado();
             responderAnteIncidentes();
         }
 
@@ -48,26 +47,26 @@ public class Antivirus
         int sigilo = malware.getSigilo();
         int deteccion = sistema.getDeteccion();
 
-        menu.printStatsAnalisis(deteccion, sigilo);
+        MenuConsola.menu.printStatsAnalisis(deteccion, sigilo);
 
         // Inicio Análisis Manual
         // Implementado de manera diferente segun el SO
         // Afecta a Sigilo del Malware
-        menu.printInicioAnalisisManual();
+        MenuConsola.menu.printInicioAnalisisManual();
         sigilo += sistema.ejecutarAnalisisManual();
         sigilo = ajustarStats(sigilo);
-        menu.printStatsAnalisis(deteccion, sigilo);
+        MenuConsola.menu.printStatsAnalisis(deteccion, sigilo);
         // Fin Análisis Manual
 
         // Inicio Análisis Automático
         // Puede ser: Rápido, profundo o Heurístico
         // Depende de la estrategia seleccionada
         // Afecta a la Detección del Sistema
-        menu.printInicioAnalisisAutomatico();
+        MenuConsola.menu.printInicioAnalisisAutomatico();
         setAnalisisStrategy();
         deteccion += analisisStrategy.ejecutarAnalisisAutomatico();
         deteccion = ajustarStats(deteccion);
-        menu.printStatsAnalisis(deteccion, sigilo);
+        MenuConsola.menu.printStatsAnalisis(deteccion, sigilo);
         // Inicio Análisis Automático
 
         // todo Actualizar estado
@@ -87,12 +86,12 @@ public class Antivirus
         int contencion = sistema.getContencion();
         int propagacion = malware.getPropagacion();
 
-        menu.printStatsRespuesta(propagacion, contencion);
+        MenuConsola.menu.printStatsRespuesta(propagacion, contencion);
 
-        menu.printInicioRespuesta();
+        MenuConsola.menu.printInicioRespuesta();
         contencion += sistema.ejecutarProtocoloContencion();
         contencion = ajustarStats(contencion);
-        menu.printStatsRespuesta(propagacion, contencion);
+        MenuConsola.menu.printStatsRespuesta(propagacion, contencion);
 
         // todo Actualizar estado
         if (contencion < propagacion)
@@ -116,7 +115,7 @@ public class Antivirus
 
     private void setAnalisisStrategy()
     {
-        switch (menu.seleccionarTipoAnalisisAutomatico())
+        switch (MenuConsola.menu.seleccionarTipoAnalisisAutomatico())
         {
             case 1:
                 analisisStrategy = new AnalisisRapido();
