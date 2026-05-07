@@ -63,7 +63,7 @@ public class SecurityEngine
 
         // Aqui se accede a la arquiterura de sistema y se le pasa a malware
         this.malwareAtacante.setObjetivo(this.sistemaDefensa);
-        MostrarCreacion();
+        printCreacion();
 
         // Se inicializa el antivirus
         // todo descomentar esta línea para presentar
@@ -143,27 +143,9 @@ public class SecurityEngine
         menu.printSistemaDesplegado();
     }
 
-    // todo mover a menu consola
-    private void MostrarCreacion()
+    private void printCreacion()
     {
-        System.out.println("\n========================================");
-        System.out.println("       ESTADO FINAL DE LA CREACIÓN");
-        System.out.println("========================================");
-
-        System.out.println("SISTEMA DEFENSA:");
-        System.out.println(" -> Nombre: " + sistemaDefensa.getNombre());
-        System.out.println(" -> SO: " + sistemaDefensa.getSO());
-        System.out.println(" -> Arquitectura: " + sistemaDefensa.getArquitectura());
-        System.out.println(" -> Puntos Detección: " + sistemaDefensa.getDeteccion());
-        System.out.println(" -> Puntos Contención: " + sistemaDefensa.getContencion());
-
-        System.out.println("\nAMENAZA ATACANTE:");
-        System.out.println(" -> Nombre: " + malwareAtacante.getNombre());
-        System.out.println(" -> Tipo: " + malwareAtacante.getTipo());
-        System.out.println(" -> Arquitectura Objetivo: " + malwareAtacante.getArquitectura());
-        System.out.println(" -> Puntos Sigilo: " + malwareAtacante.getSigilo());
-        System.out.println(" -> Puntos Propagación: " + malwareAtacante.getPropagacion());
-        System.out.println("========================================\n");
+        menu.printCreacion(sistemaDefensa, malwareAtacante);
 
         // Mostrar arte ASCII final
         printArteFinal();

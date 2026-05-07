@@ -2,6 +2,8 @@ package gui;
 
 import java.util.Scanner;
 
+import malware.Malware;
+import sistema.Sistema;
 import utils.Utils;
 
 public class MenuConsola
@@ -19,6 +21,8 @@ public class MenuConsola
     {
         this.sc = new Scanner(System.in);
     }
+
+    
 
     // ------------------------ Métodos Públicos
 
@@ -79,13 +83,13 @@ public class MenuConsola
         System.out.println("\n--- CONFIGURACIÓN DE AMENAZA ---");
         System.out.println("Selecciona el vector de ataque base:");
         System.out.println("");
-        System.out.println("┌───────────────────────┬────────────┬─────────────────┐");
-        System.out.println("|         Nombre        |   Sigilo   |   Propagación   |");
-        System.out.println("├───────────────────────┼────────────┼─────────────────┤");
-        System.out.println("| [1] Zeus(Troyano)     |     50     |        50       |");
-        System.out.println("| [2] Ryuk(Ransomware)  |     20     |        80       |");
-        System.out.println("| [3] Emotet(Keylogger) |     80     |        20       |");
-        System.out.println("└───────────────────────┴────────────┴─────────────────┘");
+        System.out.println("┌──────────────────────────┬────────────┬─────────────────┐");
+        System.out.println("|         Nombre           |   Sigilo   |   Propagación   |");
+        System.out.println("├──────────────────────────┼────────────┼─────────────────┤");
+        System.out.println("| [1] Zeus(Troyano)        |     50     |       50        |");
+        System.out.println("| [2] Ryuk(Ransomware)     |     20     |       80        |");
+        System.out.println("| [3] Emotet(Keylogger)    |     80     |       20        |");
+        System.out.println("└──────────────────────────┴────────────┴─────────────────┘");
         System.out.print("-> Elige un malware: ");
         return pedirOpcion(1, 3);
     }
@@ -233,8 +237,30 @@ public class MenuConsola
         System.out.println("--- Respuesta ante incidentes ---");
     }
 
+    public void printCreacion(Sistema sistemaDefensa, Malware malwareAtacante)
+    {
+        System.out.println("\n========================================");
+        System.out.println("       ESTADO FINAL DE LA CREACIÓN");
+        System.out.println("========================================");
+
+        System.out.println("SISTEMA DEFENSA:");
+        System.out.println(" -> Nombre: " + sistemaDefensa.getNombre());
+        System.out.println(" -> SO: " + sistemaDefensa.getSO());
+        System.out.println(" -> Arquitectura: " + sistemaDefensa.getArquitectura());
+        System.out.println(" -> Puntos Detección: " + sistemaDefensa.getDeteccion());
+        System.out.println(" -> Puntos Contención: " + sistemaDefensa.getContencion());
+
+        System.out.println("\nAMENAZA ATACANTE:");
+        System.out.println(" -> Nombre: " + malwareAtacante.getNombre());
+        System.out.println(" -> Tipo: " + malwareAtacante.getTipo());
+        System.out.println(" -> Arquitectura Objetivo: " + malwareAtacante.getArquitectura());
+        System.out.println(" -> Puntos Sigilo: " + malwareAtacante.getSigilo());
+        System.out.println(" -> Puntos Propagación: " + malwareAtacante.getPropagacion());
+        System.out.println("========================================\n");
+    }
+
     // ====================================================
-    // Anlálisis > config manual
+    // Anlálisis > config manual > general
     // ====================================================
 
     public void printStatsAnalisis(int deteccion, int sigilo)
@@ -358,6 +384,18 @@ public class MenuConsola
     // Análisis Automático
     // ====================================================
 
+    public void printVariacionDeteccion(int variacion)
+    {
+        if (variacion >= 0)
+        {
+            System.out.println(VERDE + "+ " + variacion + " Deteccion\n" + RESET);
+        }
+        else
+        {
+            System.out.println(ROJO + variacion + " Deteccion\n" + RESET);
+        }
+    }
+
     public void logsAnalisisRaido()
     {
         // todo descomentar para presentar
@@ -419,20 +457,8 @@ public class MenuConsola
         System.out.println();
     }
 
-    public void printVariacionDeteccion(int variacion)
-    {
-        if (variacion >= 0)
-        {
-            System.out.println(VERDE + "+ " + variacion + " Deteccion\n" + RESET);
-        }
-        else
-        {
-            System.out.println(ROJO + variacion + " Deteccion\n" + RESET);
-        }
-    }
-
     // ====================================================
-    // Respuesta ante incidentes
+    // Respuesta ante incidentes > general
     // ====================================================
 
     public void printStatsRespuesta(int propagacion, int contencion)
