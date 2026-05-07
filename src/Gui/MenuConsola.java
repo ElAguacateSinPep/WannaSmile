@@ -21,6 +21,11 @@ public class MenuConsola
     }
 
     // ------------------------ Métodos Públicos
+
+    // ====================================================
+    // CREACIÓN
+    // ====================================================
+
     public int printMenuPrincipal()
     {
         System.out.println("\n========================================");
@@ -175,8 +180,11 @@ public class MenuConsola
     }
 
     // ====================================================
-    // Antivirus
+    // COMPORTAMIENTO
     // ====================================================
+
+    // ====================================================
+    // Antivirus
 
     public void printAntivirusArchivoDetectado()
     {
