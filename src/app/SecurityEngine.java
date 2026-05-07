@@ -107,6 +107,18 @@ public class SecurityEngine
         menu.printMalwareListo();
     }
 
+    // todo
+    /**
+     * todo configurarSistema es el nuevo metodo
+     * todo configurarSistemaAntes es el antiguo
+     *
+     * todo configurarSistemaAntes no deja hacer analisis y respuesta segun SO. ver por que
+     * todo comporbar que configurarSistema funciona bien
+     *
+     * todo dejar solo uno de los 2
+     *
+     */
+
     private void configurarSistema()
     {
         int pref = menu.printPreferenciaSistema();
@@ -119,6 +131,53 @@ public class SecurityEngine
         {
             // Creación paso a paso con Decoradores de Sistema
 
+            // 1. Definimos el sistema operativo
+            int soOp = menu.printSistemaConfiguracion();
+            switch (soOp)
+            {
+                case 1:
+                    this.sistemaDefensa = new SistemaWindows();
+                    break;
+                case 2:
+                    this.sistemaDefensa = new SistemaMac();
+                    break;
+                case 3:
+                    this.sistemaDefensa = new SistemaLinux();
+                    break;
+                default:
+                    this.sistemaDefensa = new SistemaBase();
+                    break;
+            }
+
+            // 2. Envolvemos con el Nombre
+            String nombre = menu.printSistemaNombre();
+            this.sistemaDefensa = new NombreSistemaDecorator(this.sistemaDefensa, nombre);
+
+            // 3. Envolvemos con la Arquitectura
+            int arqOp = menu.printSistemaArquitectura();
+            this.sistemaDefensa = new ArquitecturaDecorator(this.sistemaDefensa, arqOp);
+
+            // 4. Envolvemos con la deteccion y automaticamente con la contencion
+            int puntosDeteccionContencion = menu.printSistemaDeteccion();
+            this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa,
+                puntosDeteccionContencion);
+            this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa,
+                puntosDeteccionContencion);
+        }
+        menu.printSistemaDesplegado();
+    }
+
+    private void configurarSistemaAntes()
+    {
+        int pref = menu.printPreferenciaSistema();
+        if (pref == 1)
+        {
+            int op = menu.printOpcionesPreconfiguradoSistema();
+            this.sistemaDefensa = sistemaFactory.crearSistemaPreconfigurado(op);
+        }
+        else
+        {
+            // Creación paso a paso con Decoradores de Sistema
             this.sistemaDefensa = new SistemaBase();
 
             // 2. Envolvemos con el Nombre
