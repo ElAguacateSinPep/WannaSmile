@@ -162,15 +162,8 @@ public class SecurityEngine
         printArteFinal();
     }
 
-    // todo refactor
     private void printArteFinal()
     {
-        String tipo = malwareAtacante.getTipo();
-        if (tipo.contains("Troyano"))
-            AsciiArtManager.printTroyano();
-        else if (tipo.contains("Ransomware"))
-            AsciiArtManager.printRansomware();
-        else if (tipo.contains("Keylogger"))
-            AsciiArtManager.printKeylogger();
+        malwareAtacante.printArte();
     }
 }
