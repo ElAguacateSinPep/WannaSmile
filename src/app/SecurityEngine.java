@@ -1,10 +1,26 @@
 package app;
 
-import malware.*;
-import sistema.*;
-import utils.Utils;
 import defensa.Antivirus;
-import gui.*;
+import gui.AsciiArtManager;
+import gui.MenuConsola;
+import malware.Malware;
+import malware.MalwareFactory;
+import malware.NombreDecorator;
+import malware.PropagacionDecorator;
+import malware.SODecorator;
+import malware.SigiloDecorator;
+import malware.TipoDecorator;
+import sistema.ArquitecturaDecorator;
+import sistema.ContencionDecorator;
+import sistema.DeteccionDecorator;
+import sistema.NombreSistemaDecorator;
+import sistema.Sistema;
+import sistema.SistemaBase;
+import sistema.SistemaFactory;
+import sistema.SistemaLinux;
+import sistema.SistemaMac;
+import sistema.SistemaWindows;
+import utils.Utils;
 
 public class SecurityEngine
 {
@@ -33,7 +49,7 @@ public class SecurityEngine
     {
         if (instanciaUnica == null)
         {
-            // Se crea solo la primera vez
+            // Se crea solo la primera vez (Singleton)
             instanciaUnica = new SecurityEngine();
         }
         return instanciaUnica;
@@ -48,14 +64,14 @@ public class SecurityEngine
         // Elegir orden de creación
         int eleccion = menu.printMenuPrincipal();
 
-        if (eleccion == 1)
-        { // Primero Malware
+        if (eleccion == 1) // Primero Malware
+        {
             configurarMalware();
             menu.printTransicionASistema();
             configurarSistema();
         }
-        else
-        { // Primero Sistema
+        else // Primero Sistema
+        {
             configurarSistema();
             menu.printTransicionAMalware();
             configurarMalware();
@@ -74,6 +90,7 @@ public class SecurityEngine
         antivirus.setSistema(sistemaDefensa);
         menu.printAntivirusArchivoDetectado();
 
+        // Se llama al protocolo completo de defensa del antivirus
         antivirus.protocoloAntiIndicentes();
     }
 

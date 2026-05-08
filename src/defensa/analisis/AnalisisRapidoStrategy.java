@@ -1,7 +1,7 @@
 package defensa.analisis;
 
 import defensa.AnalisisStrategy;
-import gui.*;
+import gui.MenuConsola;
 
 public class AnalisisRapidoStrategy implements AnalisisStrategy
 {

@@ -1,7 +1,5 @@
 package defensa;
 
-import utils.Utils;
-
 import defensa.analisis.AnalisisHeuristicoStrategy;
 import defensa.analisis.AnalisisProfundoStrategy;
 import defensa.analisis.AnalisisRapidoStrategy;
@@ -9,8 +7,9 @@ import defensa.estados.AmenazaDetectadaState;
 import defensa.estados.NoDetectadoState;
 import defensa.estados.SeguroState;
 import gui.MenuConsola;
-import malware.*;
-import sistema.*;
+import malware.Malware;
+import sistema.Sistema;
+import utils.Utils;
 
 public class Antivirus
 {
