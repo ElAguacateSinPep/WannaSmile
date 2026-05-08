@@ -1,6 +1,6 @@
-## Contexto General
+# WannaSmyle
 
-**Nombre:** WannaSmile
+**Autores:** Stefan Trifan y Alfredo Muñoz
 
 **Descripción**
 
