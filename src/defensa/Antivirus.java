@@ -1,9 +1,11 @@
 package defensa;
 
+import utils.Utils;
+
 import defensa.analisis.AnalisisHeuristicoStrategy;
 import defensa.analisis.AnalisisProfundoStrategy;
 import defensa.analisis.AnalisisRapidoStrategy;
-import defensa.estados.AmenazaDetectada;
+import defensa.estados.AmenazaDetectadaState;
 import defensa.estados.NoDetectadoState;
 import defensa.estados.SeguroState;
 import gui.MenuConsola;
@@ -92,7 +94,7 @@ public class Antivirus
         if (deteccion >= sigilo) // Malware detectado
         {
             detectado = true;
-            setEstado(new AmenazaDetectada());
+            setEstado(new AmenazaDetectadaState());
         }
         else // Malware NO detectado
         {
@@ -126,6 +128,7 @@ public class Antivirus
 
     private void mostrarResultado()
     {
+        Utils.esperar(2000);
         state.printEstado();
     }
 

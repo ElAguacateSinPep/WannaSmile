@@ -168,12 +168,38 @@ public class MenuConsola
 
     public void printMalwareListo()
     {
-        System.out.println("[+] Malware listo en memoria.");
+        System.out.println(ROJO + "\n[+] Malware listo en memoria." + RESET);
     }
 
     public void printSistemaDesplegado()
     {
-        System.out.println("[+] Sistema de defensa desplegado.");
+        System.out.println(VERDE + "\n[+] Sistema de defensa desplegado." + RESET);
+    }
+
+    public void printCreacion(Sistema sistemaDefensa, Malware malwareAtacante)
+    {
+        System.out.println("\n========================================");
+        System.out.println("       ESTADO FINAL DE LA CREACIÓN");
+        System.out.println("========================================");
+
+        System.out.print(VERDE);
+        System.out.println("SISTEMA DEFENSA:");
+        System.out.println(" -> Nombre:            " + sistemaDefensa.getNombre());
+        System.out.println(" -> SO:                " + sistemaDefensa.getSO());
+        System.out.println(" -> Arquitectura:      " + sistemaDefensa.getArquitectura());
+        System.out.println(" -> Puntos Detección:  " + sistemaDefensa.getDeteccion());
+        System.out.println(" -> Puntos Contención: " + sistemaDefensa.getContencion());
+        System.out.print(RESET);
+
+        System.out.print(ROJO);
+        System.out.println("\nAMENAZA ATACANTE:");
+        System.out.println(" -> Nombre:                " + malwareAtacante.getNombre());
+        System.out.println(" -> Tipo:                  " + malwareAtacante.getTipo());
+        System.out.println(" -> Arquitectura Objetivo: " + malwareAtacante.getArquitectura());
+        System.out.println(" -> Puntos Sigilo:         " + malwareAtacante.getSigilo());
+        System.out.println(" -> Puntos Propagación:    " + malwareAtacante.getPropagacion());
+        System.out.print(RESET);
+        System.out.println("========================================\n");
     }
 
     // ====================================================
@@ -230,35 +256,13 @@ public class MenuConsola
         System.out.println("--- Respuesta ante incidentes ---");
     }
 
-    public void printCreacion(Sistema sistemaDefensa, Malware malwareAtacante)
-    {
-        System.out.println("\n========================================");
-        System.out.println("       ESTADO FINAL DE LA CREACIÓN");
-        System.out.println("========================================");
-
-        System.out.println("SISTEMA DEFENSA:");
-        System.out.println(" -> Nombre: " + sistemaDefensa.getNombre());
-        System.out.println(" -> SO: " + sistemaDefensa.getSO());
-        System.out.println(" -> Arquitectura: " + sistemaDefensa.getArquitectura());
-        System.out.println(" -> Puntos Detección: " + sistemaDefensa.getDeteccion());
-        System.out.println(" -> Puntos Contención: " + sistemaDefensa.getContencion());
-
-        System.out.println("\nAMENAZA ATACANTE:");
-        System.out.println(" -> Nombre: " + malwareAtacante.getNombre());
-        System.out.println(" -> Tipo: " + malwareAtacante.getTipo());
-        System.out.println(" -> Arquitectura Objetivo: " + malwareAtacante.getArquitectura());
-        System.out.println(" -> Puntos Sigilo: " + malwareAtacante.getSigilo());
-        System.out.println(" -> Puntos Propagación: " + malwareAtacante.getPropagacion());
-        System.out.println("========================================\n");
-    }
-
     // ====================================================
     // Anlálisis > config manual > general
     // ====================================================
 
     public void printStatsAnalisis(int deteccion, int sigilo)
     {
-        System.err.println(MORADO);
+        System.out.println(MORADO);
         System.out.println("║ DETECCION = " + deteccion + " | SIGILO = " + sigilo + " ║\n");
         System.out.println(RESET);
     }
@@ -456,7 +460,7 @@ public class MenuConsola
 
     public void printStatsRespuesta(int propagacion, int contencion)
     {
-        System.err.println(MORADO);
+        System.out.println(MORADO);
         System.out
             .println("║ CONTENCION = " + contencion + " | PROPAGACION = " + propagacion + " ║\n");
         System.out.println(RESET);

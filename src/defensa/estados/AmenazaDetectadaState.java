@@ -4,7 +4,7 @@ import defensa.Antivirus;
 import defensa.AntivirusState;
 import gui.MenuConsola;
 
-public class AmenazaDetectada implements AntivirusState
+public class AmenazaDetectadaState implements AntivirusState
 {
     @Override
     public void avanzarEstado(Antivirus antivirus)
