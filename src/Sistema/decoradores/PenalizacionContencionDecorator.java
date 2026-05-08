@@ -1,4 +1,7 @@
-package sistema;
+package sistema.decoradores;
+
+import sistema.Sistema;
+import sistema.SistemaDecorator;
 
 public class PenalizacionContencionDecorator extends SistemaDecorator
 {
