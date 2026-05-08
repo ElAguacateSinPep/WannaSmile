@@ -61,12 +61,14 @@ public class SecurityEngine
             configurarMalware();
         }
 
+        Utils.esperar(1000);
+
         // Aqui se accede a la arquiterura de sistema y se le pasa a malware
         this.malwareAtacante.setObjetivo(this.sistemaDefensa);
         printCreacion();
 
         // Se inicializa el antivirus
-        Utils.esperar(3000);
+        Utils.esperar(1000);
 
         antivirus.setMalware(malwareAtacante);
         antivirus.setSistema(sistemaDefensa);

@@ -25,9 +25,10 @@ public class MenuConsola
 
     public int printMenuPrincipal()
     {
-        System.out.println("\n========================================");
-        System.out.println("       WANNASMILE: ATTACK SIMULATOR");
-        System.out.println("========================================");
+        System.out.println();
+        System.out.println("======================================================");
+        System.out.println("             WANNASMILE: ATTACK SIMULATOR             ");
+        System.out.println("======================================================");
         System.out.println("Para comenzar, debemos preparar los dos bandos.");
         System.out.println("Qué deseas configurar primero?");
         System.out.println("[1] La Amenaza (Malware)");
@@ -178,28 +179,29 @@ public class MenuConsola
 
     public void printCreacion(Sistema sistemaDefensa, Malware malwareAtacante)
     {
-        System.out.println("\n========================================");
-        System.out.println("       ESTADO FINAL DE LA CREACIÓN");
-        System.out.println("========================================");
+        System.out.println("");
+        System.out.println("===========================================================");
+        System.out.println("                ESTADO FINAL DE LA CREACIÓN                ");
+        System.out.println("===========================================================");
+        System.out.println();
 
         System.out.print(VERDE);
         System.out.println("SISTEMA DEFENSA:");
-        System.out.println(" -> Nombre:            " + sistemaDefensa.getNombre());
-        System.out.println(" -> SO:                " + sistemaDefensa.getSO());
-        System.out.println(" -> Arquitectura:      " + sistemaDefensa.getArquitectura());
-        System.out.println(" -> Puntos Detección:  " + sistemaDefensa.getDeteccion());
-        System.out.println(" -> Puntos Contención: " + sistemaDefensa.getContencion());
+        System.out.println(" -> Nombre ................. " + sistemaDefensa.getNombre());
+        System.out.println(" -> SO ..................... " + sistemaDefensa.getSO());
+        System.out.println(" -> Arquitectura ........... " + sistemaDefensa.getArquitectura());
+        System.out.println(" -> Puntos Detección ....... " + sistemaDefensa.getDeteccion());
+        System.out.println(" -> Puntos Contención ...... " + sistemaDefensa.getContencion());
         System.out.print(RESET);
 
         System.out.print(ROJO);
         System.out.println("\nAMENAZA ATACANTE:");
-        System.out.println(" -> Nombre:                " + malwareAtacante.getNombre());
-        System.out.println(" -> Tipo:                  " + malwareAtacante.getTipo());
-        System.out.println(" -> Arquitectura Objetivo: " + malwareAtacante.getArquitectura());
-        System.out.println(" -> Puntos Sigilo:         " + malwareAtacante.getSigilo());
-        System.out.println(" -> Puntos Propagación:    " + malwareAtacante.getPropagacion());
-        System.out.print(RESET);
-        System.out.println("========================================\n");
+        System.out.println(" -> Nombre ................. " + malwareAtacante.getNombre());
+        System.out.println(" -> Tipo ................... " + malwareAtacante.getTipo());
+        System.out.println(" -> Arquitectura Objetivo .. " + malwareAtacante.getArquitectura());
+        System.out.println(" -> Puntos Sigilo .......... " + malwareAtacante.getSigilo());
+        System.out.println(" -> Puntos Propagación ..... " + malwareAtacante.getPropagacion());
+        System.out.println(RESET);
     }
 
     // ====================================================
@@ -215,7 +217,7 @@ public class MenuConsola
         System.out.println(
             """
                 ╔═════════════════════════════════════════════════════════╗
-                ║                ⚠ ANTIVIRUS: ADVERTENCIA ⚠               ║
+                ║                ! ANTIVIRUS: ADVERTENCIA !               ║
                 ╠═════════════════════════════════════════════════════════╣
                 ║  Nuevo archivo desconocido detectado                    ║
                 ║  Iniciando protocolo de respuesta ante incidentes...    ║
@@ -230,7 +232,7 @@ public class MenuConsola
         System.out.println(
             """
                 ╔═════════════════════════════════════════════════════════╗
-                ║                  ⚠ ANTIVIRUS: ALERTA ⚠                  ║
+                ║                  ! ANTIVIRUS: ALERTA !                  ║
                 ╠═════════════════════════════════════════════════════════╣
                 ║  El archivo descargado contiene software malicioso      ║
                 ║  Iniciando protocolo de contención                      ║
@@ -263,7 +265,9 @@ public class MenuConsola
     public void printStatsAnalisis(int deteccion, int sigilo)
     {
         System.out.println(MORADO);
-        System.out.println("║ DETECCION = " + deteccion + " | SIGILO = " + sigilo + " ║\n");
+        System.out.println("╭────────────── STATS ───────────╮");
+        System.out.printf("│ DETECCIÓN = %3d | SIGILO = %3d │%n", deteccion, sigilo);
+        System.out.println("╰─────────────────┴──────────────╯");
         System.out.println(RESET);
     }
 
@@ -459,8 +463,9 @@ public class MenuConsola
     public void printStatsRespuesta(int propagacion, int contencion)
     {
         System.out.println(MORADO);
-        System.out
-            .println("║ CONTENCION = " + contencion + " | PROPAGACION = " + propagacion + " ║\n");
+        System.out.println("╭──────────────── STATS ───────────────╮");
+        System.out.printf("│ PROPAGACION = %3d | CONTENCION = %3d │%n", propagacion, contencion);
+        System.out.println("╰───────────────────┴──────────────────╯");
         System.out.println(RESET);
     }
 
