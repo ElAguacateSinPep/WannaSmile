@@ -3,6 +3,7 @@ package defensa.estados;
 import defensa.Antivirus;
 import defensa.AntivirusState;
 import gui.MenuConsola;
+import malware.Malware;
 
 public class SeguroState implements AntivirusState
 {
@@ -13,7 +14,7 @@ public class SeguroState implements AntivirusState
     }
 
     @Override
-    public void mostrarDesenlace()
+    public void mostrarDesenlace(Malware malware)
     {
         MenuConsola.menu.printAmenazaDetectadaNeutralizada();
     }

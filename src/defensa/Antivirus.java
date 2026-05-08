@@ -110,16 +110,14 @@ public class Antivirus
         {
             // <state>
             // Delegamos el cambio de estado a la subclase
-            state.avanzarEstado(this);
+            this.state.avanzarEstado(this);
         }
     }
 
     private void mostrarResultado()
     {
         Utils.esperar(2000);
-        state.mostrarDesenlace();
-        MenuConsola.menu.printMensajeMalware(malware.getMensaje());
-        Utils.esperar(5000);
+        this.state.mostrarDesenlace(this.malware);
     }
     // <Facade y Templaye Method>
 
