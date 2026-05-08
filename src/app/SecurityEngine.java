@@ -41,7 +41,6 @@ public class SecurityEngine
         this.menu = new MenuConsola();
         this.malwareFactory = new MalwareFactory();
         this.sistemaFactory = new SistemaFactory();
-        this.antivirus = new Antivirus();
     }
 
     // ------------------------ Métodos Públicos
@@ -86,8 +85,7 @@ public class SecurityEngine
         // Se inicializa el antivirus
         Utils.esperar(1000);
 
-        antivirus.setMalware(malwareAtacante);
-        antivirus.setSistema(sistemaDefensa);
+        Antivirus antivirus = new Antivirus(sistemaDefensa, malwareAtacante);
         menu.printAntivirusArchivoDetectado();
 
         // Se llama al protocolo completo de defensa del antivirus

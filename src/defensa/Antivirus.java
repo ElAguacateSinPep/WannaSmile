@@ -21,20 +21,11 @@ public class Antivirus
     private final int        MAX_STATS = 100;
     private final int        MIN_STATS = 0;
 
-    public Antivirus()
-    {
-        this.state = new SeguroState();
-    }
-
-    // --------------------------------- Setters
-    public void setMalware(Malware malware)
-    {
-        this.malware = malware;
-    }
-
-    public void setSistema(Sistema sistema)
+    public Antivirus(Sistema sistema, Malware malware)
     {
         this.sistema = sistema;
+        this.malware = malware;
+        this.state = new SeguroState();
     }
 
     // ------------------------ Métodos Públicos
@@ -115,7 +106,7 @@ public class Antivirus
         MenuConsola.menu.printStatsRespuesta(propagacion, contencion);
 
         // Resultado respuesta
-        if (malwareContenido(contencion, propagacion))
+        if (malwareNeutralizado(contencion, propagacion))
         {
             // <state>
             // Delegamos el cambio de estado a la subclase
@@ -178,7 +169,7 @@ public class Antivirus
         return deteccion >= sigilo;
     }
 
-    private boolean malwareContenido(int contencion, int propagacion)
+    private boolean malwareNeutralizado(int contencion, int propagacion)
     {
         return contencion >= propagacion;
     }
