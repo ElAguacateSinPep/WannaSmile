@@ -9,11 +9,11 @@ public class AmenazaDetectadaState implements AntivirusState
     @Override
     public void avanzarEstado(Antivirus antivirus)
     {
-        antivirus.setEstado(new SeguroState());
+        antivirus.cambiarEstado(new SeguroState());
     }
 
     @Override
-    public void printEstado()
+    public void mostrarDesenlace()
     {
         MenuConsola.menu.printAmenazaDetectadaSistemaInfectado();
     }

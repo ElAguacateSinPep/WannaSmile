@@ -19,6 +19,8 @@ public class Antivirus
     private Sistema          sistema;
     private AnalisisStrategy analisisStrategy;
     private AntivirusState   state;
+    private final int        MAX_STATS = 100;
+    private final int        MIN_STATS = 0;
 
     public Antivirus()
     {
@@ -36,14 +38,8 @@ public class Antivirus
         this.sistema = sistema;
     }
 
-    public void setEstado(AntivirusState state)
-    {
-        this.state = state;
-    }
-
     // ------------------------ Métodos Públicos
-
-    // <Template Method>
+    // <Facade y Templaye Method>
     public void protocoloAntiIndicentes()
     {
         if (analizarArchivo())
@@ -55,12 +51,10 @@ public class Antivirus
         // Comportamiento común TEMPALTE METHOD
         mostrarResultado();
     }
-    // </Template Method>
 
     // ------------------------ Métodos Privados
     private boolean analizarArchivo()
     {
-        boolean detectado;
         int sigilo = this.malware.getSigilo();
         int deteccion = this.sistema.getDeteccion();
 
@@ -86,23 +80,25 @@ public class Antivirus
          */
         MenuConsola.menu.printInicioAnalisisAutomatico();
         setAnalisisStrategy();
+
+        // <strategy>
         deteccion += this.analisisStrategy.ejecutarAnalisisAutomatico();
+
         deteccion = ajustarStats(deteccion);
         MenuConsola.menu.printStatsAnalisis(deteccion, sigilo);
 
         // Resultado análisis
-        if (deteccion >= sigilo) // Malware detectado
+        if (malwareDetectado(deteccion, sigilo))
         {
-            detectado = true;
-            setEstado(new AmenazaDetectadaState());
+            cambiarEstado(new AmenazaDetectadaState());
+            return true;
         }
         else // Malware NO detectado
         {
-            detectado = false;
-            setEstado(new NoDetectadoState());
+            cambiarEstado(new NoDetectadoState());
+            return false;
         }
 
-        return detectado;
     }
 
     private void responderAnteIncidentes()
@@ -120,8 +116,10 @@ public class Antivirus
         MenuConsola.menu.printStatsRespuesta(propagacion, contencion);
 
         // Resultado respuesta
-        if (contencion >= propagacion) // Malware Neutralizado
+        if (malwareContenido(contencion, propagacion))
         {
+            // <state>
+            // Delegamos el cambio de estado a la subclase
             state.avanzarEstado(this);
         }
     }
@@ -129,8 +127,9 @@ public class Antivirus
     private void mostrarResultado()
     {
         Utils.esperar(2000);
-        state.printEstado();
+        state.mostrarDesenlace();
     }
+    // <Facade y Templaye Method>
 
     private void setAnalisisStrategy()
     {
@@ -151,20 +150,37 @@ public class Antivirus
         }
     }
 
+    // ------------------------ Métodos Públicos
+    public void cambiarEstado(AntivirusState state)
+    {
+        this.state = state;
+    }
+
+    // ------------------------ Métodos Privados
     /**
      * @brief asegura que no nos encontraremos:
      *        - valores negativos
      *        - valores superiores a 100
      * @param valor
-     * @return
+     * @return entre 0 y 100
      */
     private int ajustarStats(int valor)
     {
-        if (valor > 100)
-            return 100;
-        else if (valor < 0)
-            return 0;
+        if (valor > MAX_STATS)
+            return MAX_STATS;
+        else if (valor < MIN_STATS)
+            return MIN_STATS;
         else
             return valor;
+    }
+
+    private boolean malwareDetectado(int deteccion, int sigilo)
+    {
+        return deteccion >= sigilo;
+    }
+
+    private boolean malwareContenido(int contencion, int propagacion)
+    {
+        return contencion >= propagacion;
     }
 }

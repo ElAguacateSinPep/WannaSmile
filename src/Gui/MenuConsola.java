@@ -395,18 +395,16 @@ public class MenuConsola
 
     public void logsAnalisisRaido()
     {
-        // todo descomentar para presentar
         Utils.esperar(800);
 
         System.out.println("[ Analisis Rapido ] Escaneando firmas basicas del archivo...");
-        // todo descomentar para presentar
+
         Utils.esperar(800);
         System.out.println("[ Analisis Rapido ] Verificacion superficial completada.");
-        // todo descomentar para presentar
+
         Utils.esperar(800);
         System.out.println("[ ADVERTENCIA ] Algunas amenazas avanzadas podrian no detectarse.");
 
-        // todo descomentar para presentar
         Utils.esperar(800);
 
         System.out.println();
@@ -414,16 +412,15 @@ public class MenuConsola
 
     public void logsAnalisisProfundo()
     {
-        // todo descomentar para presentar
         Utils.esperar(800);
 
         System.out.println(
             "[ Analisis Profundo ] Revisando procesos, memoria y actividad sospechosa......");
-        // todo descomentar para presentar
-        Utils.esperar(800);
-        System.out.println("[ INFO ] Escaneo avanzado completado.");
 
-        // todo descomentar para presentar
+        Utils.esperar(800);
+        System.out.println(
+            "[ INFO ] Escaneo avanzado completado.");
+
         Utils.esperar(800);
 
         System.out.println();
@@ -431,24 +428,25 @@ public class MenuConsola
 
     public void logsAnalisisHeuristico()
     {
-        // todo descomentar para presentar
         Utils.esperar(800);
 
-        System.out.println(
-            "[ Analisis Heurístico ] Analizando patrones de comportamiento desconocidos...");
-        // todo descomentar para presentar
+        System.out
+            .println(
+                "[ Analisis Heurístico ] Analizando patrones de comportamiento desconocidos...");
+
         Utils.esperar(800);
-        System.out.println(
-            "[ Analisis Heurístico ] Comparando actividad del archivo con amenazas registradas..");
-        // todo descomentar para presentar
+        System.out
+            .println(
+                "[ Analisis Heurístico ] Comparando actividad del archivo con amenazas registradas..");
+
         Utils.esperar(800);
         System.out
             .println("[ Analisis Heurístico ] Detectando anomalías en tiempo de ejecución...");
-        // todo descomentar para presentar
-        Utils.esperar(800);
-        System.out.println("[ INFO ] Escaneo Heurístico completado.");
 
-        // todo descomentar para presentar
+        Utils.esperar(800);
+        System.out
+            .println("[ INFO ] Escaneo Heurístico completado.");
+
         Utils.esperar(800);
 
         System.out.println();
@@ -686,7 +684,7 @@ public class MenuConsola
                 // Comprobamos si está en el rango permitido
                 if (opcion >= min && opcion <= max)
                 {
-                    opcionValida = true; // Todo correcto, salimos del bucle
+                    opcionValida = true; // Toodo correcto, salimos del bucle
                 }
                 else
                 {

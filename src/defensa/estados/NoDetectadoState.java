@@ -13,7 +13,7 @@ public class NoDetectadoState implements AntivirusState
     }
 
     @Override
-    public void printEstado()
+    public void mostrarDesenlace()
     {
         MenuConsola.menu.printAmenazazaNoDetectada();
     }

@@ -66,7 +66,6 @@ public class SecurityEngine
         printCreacion();
 
         // Se inicializa el antivirus
-        // todo descomentar esta línea para presentar
         Utils.esperar(3000);
 
         antivirus.setMalware(malwareAtacante);
@@ -106,19 +105,6 @@ public class SecurityEngine
         }
         menu.printMalwareListo();
     }
-
-    // todo
-    /**
-     * todo configurarSistema es el nuevo metodo
-     * todo configurarSistemaAntes es el antiguo
-     *
-     * todo configurarSistemaAntes no deja hacer analisis y respuesta segun SO. ver
-     * por que
-     * todo comporbar que configurarSistema funciona bien
-     *
-     * todo dejar solo uno de los 2
-     *
-     */
 
     private void configurarSistema()
     {
@@ -168,41 +154,6 @@ public class SecurityEngine
         menu.printSistemaDesplegado();
     }
 
-    private void configurarSistemaAntes()
-    {
-        int pref = menu.printPreferenciaSistema();
-        if (pref == 1)
-        {
-            int op = menu.printOpcionesPreconfiguradoSistema();
-            this.sistemaDefensa = sistemaFactory.crearSistemaPreconfigurado(op);
-        }
-        else
-        {
-            // Creación paso a paso con Decoradores de Sistema
-            this.sistemaDefensa = new SistemaBase();
-
-            // 2. Envolvemos con el Nombre
-            String nombre = menu.printSistemaNombre();
-            this.sistemaDefensa = new NombreSistemaDecorator(this.sistemaDefensa, nombre);
-
-            // 3. Envolvemos con el Sistema Operativo
-            int soOp = menu.printSistemaConfiguracion();
-            this.sistemaDefensa = new SOSistemaDecorator(this.sistemaDefensa, soOp);
-
-            // 4. Envolvemos con la Arquitectura
-            int arqOp = menu.printSistemaArquitectura();
-            this.sistemaDefensa = new ArquitecturaDecorator(this.sistemaDefensa, arqOp);
-
-            // 5. Envolvemos con la deteccion y automaticamente con la contencion
-            int puntosDeteccionContencion = menu.printSistemaDeteccion();
-            this.sistemaDefensa = new DeteccionDecorator(this.sistemaDefensa,
-                puntosDeteccionContencion);
-            this.sistemaDefensa = new ContencionDecorator(this.sistemaDefensa,
-                puntosDeteccionContencion);
-        }
-        menu.printSistemaDesplegado();
-    }
-
     private void printCreacion()
     {
         menu.printCreacion(sistemaDefensa, malwareAtacante);
@@ -211,6 +162,7 @@ public class SecurityEngine
         printArteFinal();
     }
 
+    // todo refactor
     private void printArteFinal()
     {
         String tipo = malwareAtacante.getTipo();

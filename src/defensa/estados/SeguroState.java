@@ -13,7 +13,7 @@ public class SeguroState implements AntivirusState
     }
 
     @Override
-    public void printEstado()
+    public void mostrarDesenlace()
     {
         MenuConsola.menu.printAmenazaDetectadaNeutralizada();
     }
