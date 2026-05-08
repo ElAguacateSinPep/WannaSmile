@@ -669,6 +669,13 @@ public class MenuConsola
         AsciiArtManager.printEscudoSistemaSeguro();
     }
 
+    public void printMensajeMalware(String mensaje)
+    {
+        System.out.print(ROJO);
+        System.out.println("- Malware: " + mensaje);
+        System.out.println(RESET);
+    }
+
     // ====================================================
     // Entrada de datos
     // ====================================================

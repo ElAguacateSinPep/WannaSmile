@@ -118,6 +118,8 @@ public class Antivirus
     {
         Utils.esperar(2000);
         state.mostrarDesenlace();
+        MenuConsola.menu.printMensajeMalware(malware.getMensaje());
+        Utils.esperar(5000);
     }
     // <Facade y Templaye Method>
 
