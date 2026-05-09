@@ -512,7 +512,7 @@ public class MenuConsola
     {
         System.out.println(
             "Windows Defender no puede garantizar la seguridad del archivo."
-                + "\n¿Ejecutar?"
+                + "\n¿Ejecutar el archivo igualmente?"
                 + "\n[1] - Si"
                 + "\n[2] - No");
         System.out.print("-> Elige una opción: ");
