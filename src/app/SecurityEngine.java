@@ -5,26 +5,23 @@ import gui.AsciiArtManager;
 import gui.MenuConsola;
 import malware.Malware;
 import malware.MalwareFactory;
+import malware.decoradores.KeyloggerDecorator;
 import malware.decoradores.NombreDecorator;
 import malware.decoradores.PropagacionDecorator;
+import malware.decoradores.RansomwareDecorator;
 import malware.decoradores.SODecorator;
 import malware.decoradores.SigiloDecorator;
-import malware.decoradores.TipoDecorator;
 import malware.decoradores.TroyanoDecorator;
-import malware.decoradores.RansomwareDecorator;
-import malware.decoradores.KeyloggerDecorator;
 import sistema.Sistema;
-import sistema.SistemaBase;
 import sistema.SistemaFactory;
-import sistema.SistemaLinux;
-import sistema.SistemaMac;
-import sistema.SistemaWindows;
 import sistema.decoradores.ArquitecturaDecorator;
 import sistema.decoradores.ContencionDecorator;
 import sistema.decoradores.DeteccionDecorator;
+import sistema.decoradores.LinuxDecorator;
+import sistema.decoradores.MacDecorator;
 import sistema.decoradores.NombreSistemaDecorator;
-import sistema.decoradores.*;
-import utils.*;
+import sistema.decoradores.WindowsDecorator;
+import utils.Utils;
 
 public class SecurityEngine {
 	// ------------------------------- Atributos

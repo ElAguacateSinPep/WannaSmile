@@ -2,8 +2,8 @@ package sistema.decoradores;
 
 import sistema.Sistema;
 import sistema.SistemaDecorator;
-import utils.GestorAnalisis;
 import utils.GestionProtocolos;
+import utils.GestorAnalisis;
 
 public class MacDecorator extends SistemaDecorator {
 	public MacDecorator(Sistema envuelto) {

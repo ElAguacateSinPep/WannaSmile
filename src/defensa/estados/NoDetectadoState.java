@@ -5,7 +5,6 @@ import defensa.AntivirusState;
 import gui.MenuConsola;
 import malware.Malware;
 import utils.Utils;
-import utils.GestorPayloads;
 
 public class NoDetectadoState implements AntivirusState {
 	@Override
