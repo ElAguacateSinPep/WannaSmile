@@ -88,7 +88,6 @@ public class Antivirus
             cambiarEstado(new NoDetectadoState());
             return false;
         }
-
     }
 
     private void responderAnteIncidentes()
