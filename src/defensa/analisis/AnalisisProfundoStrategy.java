@@ -5,13 +5,16 @@ import gui.MenuConsola;
 
 public class AnalisisProfundoStrategy implements AnalisisStrategy
 {
+    // ------------------------------- Atributos
+    private static final int AUMENTO_ANALISIS_PROFUNDO = 10;
+
     // ------------------------ Métodos Públicos
     public int ejecutarAnalisisAutomatico()
     {
         int variacionDeteccion = 0;
 
         MenuConsola.menu.logsAnalisisProfundo();
-        variacionDeteccion += 10;
+        variacionDeteccion += AUMENTO_ANALISIS_PROFUNDO;
 
         MenuConsola.menu.printVariacionDeteccion(variacionDeteccion);
 

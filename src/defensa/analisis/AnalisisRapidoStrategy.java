@@ -5,13 +5,16 @@ import gui.MenuConsola;
 
 public class AnalisisRapidoStrategy implements AnalisisStrategy
 {
+    // ------------------------------- Atributos
+    private static final int DISMINUCION_ANALISIS_HEURISTICO = -10;
+
     // ------------------------ Métodos Públicos
     public int ejecutarAnalisisAutomatico()
     {
         int variacionDeteccion = 0;
 
         MenuConsola.menu.logsAnalisisRaido();
-        variacionDeteccion -= 10;
+        variacionDeteccion += DISMINUCION_ANALISIS_HEURISTICO;
 
         MenuConsola.menu.printVariacionDeteccion(variacionDeteccion);
 

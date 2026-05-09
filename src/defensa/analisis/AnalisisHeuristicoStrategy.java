@@ -5,13 +5,16 @@ import gui.MenuConsola;
 
 public class AnalisisHeuristicoStrategy implements AnalisisStrategy
 {
+    // ------------------------------- Atributos
+    private static final int AUMENTO_ANALISIS_HEURISTICO = 50;
+
     // ------------------------ Métodos Públicos
     public int ejecutarAnalisisAutomatico()
     {
         int variacionDeteccion = 0;
 
         MenuConsola.menu.logsAnalisisHeuristico();
-        variacionDeteccion += 50;
+        variacionDeteccion += AUMENTO_ANALISIS_HEURISTICO;
 
         MenuConsola.menu.printVariacionDeteccion(variacionDeteccion);
 
