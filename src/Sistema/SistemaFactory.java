@@ -1,5 +1,9 @@
 package sistema;
 
+import sistema.tipos.SistemaLinux;
+import sistema.tipos.SistemaMac;
+import sistema.tipos.SistemaWindows;
+
 public class SistemaFactory
 {
     // --------------------------- Constructores

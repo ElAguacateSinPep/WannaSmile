@@ -2,26 +2,31 @@ package sistema.decoradores;
 
 import sistema.Sistema;
 import sistema.SistemaDecorator;
-import utils.GestionProtocolos;
-import utils.GestorAnalisis;
+import utilidades.GestionProtocolos;
+import utilidades.GestorAnalisis;
 
-public class LinuxDecorator extends SistemaDecorator {
-	public LinuxDecorator(Sistema envuelto) {
-		super(envuelto);
-	}
+public class LinuxDecorator extends SistemaDecorator
+{
+    public LinuxDecorator(Sistema envuelto)
+    {
+        super(envuelto);
+    }
 
-	@Override
-	public String getSO() {
-		return "Linux";
-	}
+    @Override
+    public String getSO()
+    {
+        return "Linux";
+    }
 
-	@Override
-	public int ejecutarAnalisisManual() {
-		return GestorAnalisis.analisisLinux();
-	}
+    @Override
+    public int ejecutarAnalisisManual()
+    {
+        return GestorAnalisis.analisisLinux();
+    }
 
-	@Override
-	public int ejecutarProtocoloContencion() {
-		return GestionProtocolos.contencionLinux();
-	}
+    @Override
+    public int ejecutarProtocoloContencion()
+    {
+        return GestionProtocolos.contencionLinux();
+    }
 }
