@@ -1,31 +1,18 @@
-package sistema;
+package sistema.decoradores;
 
+import sistema.Sistema;
+import sistema.SistemaDecorator;
 import utils.GestorAnalisis;
 import utils.GestionProtocolos;
 
-public class SistemaMac extends SistemaBase {
-	public SistemaMac() {
-		this.arquitectura = "ARM";
-	}
-
-	@Override
-	public String getNombre() {
-		return "Macbook Pro M5";
+public class MacDecorator extends SistemaDecorator {
+	public MacDecorator(Sistema envuelto) {
+		super(envuelto);
 	}
 
 	@Override
 	public String getSO() {
 		return "macOS";
-	}
-
-	@Override
-	public int getDeteccion() {
-		return 50;
-	}
-
-	@Override
-	public int getContencion() {
-		return 50;
 	}
 
 	@Override

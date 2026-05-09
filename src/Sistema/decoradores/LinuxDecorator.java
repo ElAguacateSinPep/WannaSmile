@@ -1,31 +1,18 @@
-package sistema;
+package sistema.decoradores;
 
+import sistema.Sistema;
+import sistema.SistemaDecorator;
 import utils.GestorAnalisis;
 import utils.GestionProtocolos;
 
-public class SistemaLinux extends SistemaBase {
-	public SistemaLinux() {
-		this.arquitectura = "x86";
-	}
-
-	@Override
-	public String getNombre() {
-		return "Thinkpad";
+public class LinuxDecorator extends SistemaDecorator {
+	public LinuxDecorator(Sistema envuelto) {
+		super(envuelto);
 	}
 
 	@Override
 	public String getSO() {
 		return "Linux";
-	}
-
-	@Override
-	public int getDeteccion() {
-		return 75;
-	}
-
-	@Override
-	public int getContencion() {
-		return 25;
 	}
 
 	@Override

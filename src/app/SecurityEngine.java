@@ -23,7 +23,8 @@ import sistema.decoradores.ArquitecturaDecorator;
 import sistema.decoradores.ContencionDecorator;
 import sistema.decoradores.DeteccionDecorator;
 import sistema.decoradores.NombreSistemaDecorator;
-import utils.Utils;
+import sistema.decoradores.*;
+import utils.*;
 
 public class SecurityEngine {
 	// ------------------------------- Atributos
@@ -137,23 +138,23 @@ public class SecurityEngine {
 		} else {
 			// Creación paso a paso con Decoradores de Sistema
 
-			// 2. Envolvemos con el Nombre
+			// 1. Envolvemos con el Nombre
 			String nombre = menu.printSistemaNombre();
 			this.sistemaDefensa = new NombreSistemaDecorator(this.sistemaDefensa, nombre);
-			// 1. Definimos el sistema operativo
+			// 2. Definimos el sistema operativo
 			int soOp = menu.printSistemaConfiguracion();
 			switch (soOp) {
 				case 1:
-					this.sistemaDefensa = new SistemaWindows();
+					this.sistemaDefensa = new WindowsDecorator(this.sistemaDefensa);
 					break;
 				case 2:
-					this.sistemaDefensa = new SistemaMac();
+					this.sistemaDefensa = new MacDecorator(this.sistemaDefensa);
 					break;
 				case 3:
-					this.sistemaDefensa = new SistemaLinux();
+					this.sistemaDefensa = new LinuxDecorator(this.sistemaDefensa);
 					break;
 				default:
-					this.sistemaDefensa = new SistemaBase();
+					this.sistemaDefensa = new WindowsDecorator(this.sistemaDefensa);
 					break;
 			}
 
