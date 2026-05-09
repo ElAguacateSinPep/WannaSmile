@@ -71,8 +71,6 @@ public class SecurityEngine {
 			configurarMalware();
 		}
 
-		Utils.esperar(1000);
-
 		// Aqui se accede a la arquiterura de sistema y se le pasa a malware
 		this.malwareAtacante.setObjetivo(this.sistemaDefensa);
 		printCreacion();
