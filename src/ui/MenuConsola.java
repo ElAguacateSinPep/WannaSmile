@@ -384,8 +384,8 @@ public class MenuConsola
         System.out.println(
             "PortDaemon ha bloqueado una conexión sospechosa."
                 + "\n¿Permitirla manualmente?"
-                + "\n[1] - Si" // + sigilo
-                + "\n[2] - No");
+                + "\n[2] - No"
+                + "\n[1] - Si"); // + sigilo
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -477,13 +477,18 @@ public class MenuConsola
     // Respuesta ante incidentes > general
     // ====================================================
 
-    public void printStatsRespuesta(int propagacion, int contencion)
+    public static void printStatsRespuesta(int propagacion, int contencion)
     {
         System.out.println(MORADO);
-        System.out.println("╭──────────────── STATS ───────────────╮");
-        System.out.printf("│ PROPAGACION = %3d | CONTENCION = %3d │%n", propagacion, contencion);
-        System.out.println("╰───────────────────┴──────────────────╯");
+        System.out.println("╭─────────────── STATS ────────────────╮");
+        System.out.printf("│ CONTENCION = %3d | PROPAGACION = %3d │%n", propagacion, contencion);
+        System.out.println("╰──────────────────┴───────────────────╯");
         System.out.println(RESET);
+    }
+
+    public static void main(String[] args)
+    {
+        printStatsRespuesta(10, 10);
     }
 
     public void printAumentoContencion()
