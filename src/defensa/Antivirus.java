@@ -34,7 +34,6 @@ public class Antivirus
             responderAnteIncidentes();
         }
 
-        // Comportamiento común TEMPALTE METHOD
         mostrarResultado();
     }
 
@@ -104,9 +103,8 @@ public class Antivirus
         // Resultado respuesta
         if (malwareNeutralizado(contencion, propagacion))
         {
-            // <state>
             // Delegamos el cambio de estado a la subclase
-            this.state.avanzarEstado(this);
+            this.state.avanzarEstado(this); // <state>
         }
     }
 
@@ -115,7 +113,7 @@ public class Antivirus
         Utils.esperar(2000);
         this.state.mostrarDesenlace(this.malware);
     }
-    // <Facade y Templaye Method>
+    // </Facade y Templaye Method>
 
     private void setAnalisisStrategy()
     {
@@ -154,10 +152,11 @@ public class Antivirus
     {
         if (valor > MAX_STATS)
             return MAX_STATS;
-        else if (valor < MIN_STATS)
+
+        if (valor < MIN_STATS)
             return MIN_STATS;
-        else
-            return valor;
+
+        return valor;
     }
 
     private boolean malwareDetectado(int deteccion, int sigilo)
