@@ -1,8 +1,7 @@
 package sistema.tipos;
 
-import utilidades.GestorAnalisis;
 import sistema.SistemaBase;
-import utilidades.GestionProtocolos;
+import sistema.protocolos.*;
 
 public class SistemaLinux extends SistemaBase
 {
@@ -44,6 +43,6 @@ public class SistemaLinux extends SistemaBase
     @Override
     public int ejecutarProtocoloContencion()
     {
-        return GestionProtocolos.contencionLinux();
+        return GestorContencion.contencionLinux();
     }
 }

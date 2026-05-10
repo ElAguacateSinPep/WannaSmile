@@ -1,11 +1,7 @@
 package defensa;
 
-import defensa.analisis.AnalisisHeuristicoStrategy;
-import defensa.analisis.AnalisisProfundoStrategy;
-import defensa.analisis.AnalisisRapidoStrategy;
-import defensa.estados.AmenazaDetectadaState;
-import defensa.estados.NoDetectadoState;
-import defensa.estados.SeguroState;
+import defensa.analisis.*;
+import defensa.estados.*;
 import gui.MenuConsola;
 import malware.Malware;
 import sistema.Sistema;

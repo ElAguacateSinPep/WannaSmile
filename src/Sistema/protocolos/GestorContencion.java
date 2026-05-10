@@ -1,8 +1,8 @@
-package utilidades;
+package sistema.protocolos;
 
 import gui.MenuConsola;
 
-public class GestionProtocolos
+public class GestorContencion
 {
     // Definimos las variaciones de contencion aqui
     private static final int AUMENTO_CONTENCION    = 20;

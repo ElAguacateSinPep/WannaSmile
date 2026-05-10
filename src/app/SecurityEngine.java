@@ -1,26 +1,13 @@
 package app;
 
+import malware.decoradores.*;
+import sistema.decoradores.*;
+import gui.*;
 import defensa.Antivirus;
-import gui.AsciiArtManager;
-import gui.MenuConsola;
 import malware.Malware;
 import malware.MalwareFactory;
-import malware.decoradores.KeyloggerDecorator;
-import malware.decoradores.NombreDecorator;
-import malware.decoradores.PropagacionDecorator;
-import malware.decoradores.RansomwareDecorator;
-import malware.decoradores.SODecorator;
-import malware.decoradores.SigiloDecorator;
-import malware.decoradores.TroyanoDecorator;
 import sistema.Sistema;
 import sistema.SistemaFactory;
-import sistema.decoradores.ArquitecturaDecorator;
-import sistema.decoradores.ContencionDecorator;
-import sistema.decoradores.DeteccionDecorator;
-import sistema.decoradores.LinuxDecorator;
-import sistema.decoradores.MacDecorator;
-import sistema.decoradores.NombreSistemaDecorator;
-import sistema.decoradores.WindowsDecorator;
 import utilidades.Utils;
 
 public class SecurityEngine

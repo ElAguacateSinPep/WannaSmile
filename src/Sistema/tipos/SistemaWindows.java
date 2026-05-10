@@ -2,8 +2,7 @@ package sistema.tipos;
 
 import gui.MenuConsola;
 import sistema.SistemaBase;
-import utilidades.GestionProtocolos;
-import utilidades.GestorAnalisis;
+import sistema.protocolos.*;
 
 public class SistemaWindows extends SistemaBase
 {
@@ -50,6 +49,6 @@ public class SistemaWindows extends SistemaBase
     @Override
     public int ejecutarProtocoloContencion()
     {
-        return GestionProtocolos.contencionWindows();
+        return GestorContencion.contencionWindows();
     }
 }

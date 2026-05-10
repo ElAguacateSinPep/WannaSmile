@@ -4,8 +4,8 @@ import defensa.Antivirus;
 import defensa.AntivirusState;
 import gui.MenuConsola;
 import malware.Malware;
+import malware.payloads.GestorPayloads;
 import utilidades.Utils;
-import utilidades.GestorPayloads;
 
 public class AmenazaDetectadaState implements AntivirusState
 {

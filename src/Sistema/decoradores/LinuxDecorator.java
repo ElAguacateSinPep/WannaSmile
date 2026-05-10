@@ -2,8 +2,8 @@ package sistema.decoradores;
 
 import sistema.Sistema;
 import sistema.SistemaDecorator;
-import utilidades.GestionProtocolos;
-import utilidades.GestorAnalisis;
+import sistema.protocolos.GestorAnalisis;
+import sistema.protocolos.GestorContencion;
 
 public class LinuxDecorator extends SistemaDecorator
 {
@@ -27,6 +27,6 @@ public class LinuxDecorator extends SistemaDecorator
     @Override
     public int ejecutarProtocoloContencion()
     {
-        return GestionProtocolos.contencionLinux();
+        return GestorContencion.contencionLinux();
     }
 }

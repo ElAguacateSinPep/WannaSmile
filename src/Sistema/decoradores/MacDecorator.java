@@ -2,8 +2,7 @@ package sistema.decoradores;
 
 import sistema.Sistema;
 import sistema.SistemaDecorator;
-import utilidades.GestionProtocolos;
-import utilidades.GestorAnalisis;
+import sistema.protocolos.*;
 
 public class MacDecorator extends SistemaDecorator
 {
@@ -27,6 +26,6 @@ public class MacDecorator extends SistemaDecorator
     @Override
     public int ejecutarProtocoloContencion()
     {
-        return GestionProtocolos.contencionMac();
+        return GestorContencion.contencionMac();
     }
 }

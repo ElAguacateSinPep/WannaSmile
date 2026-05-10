@@ -1,8 +1,7 @@
 package sistema.tipos;
 
 import sistema.SistemaBase;
-import utilidades.GestionProtocolos;
-import utilidades.GestorAnalisis;
+import sistema.protocolos.*;
 
 public class SistemaMac extends SistemaBase
 {
@@ -44,6 +43,6 @@ public class SistemaMac extends SistemaBase
     @Override
     public int ejecutarProtocoloContencion()
     {
-        return GestionProtocolos.contencionMac();
+        return GestorContencion.contencionMac();
     }
 }

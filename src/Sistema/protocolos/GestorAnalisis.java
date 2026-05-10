@@ -1,4 +1,4 @@
-package utilidades;
+package sistema.protocolos;
 
 import gui.MenuConsola;
 
