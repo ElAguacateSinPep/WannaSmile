@@ -1,8 +1,8 @@
 package sistema.tipos;
 
-import gui.MenuConsola;
 import sistema.SistemaBase;
 import sistema.protocolos.*;
+import ui.MenuConsola;
 
 public class SistemaWindows extends SistemaBase
 {

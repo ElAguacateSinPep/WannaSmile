@@ -1,4 +1,4 @@
-package gui;
+package ui;
 
 public class AsciiArtManager
 {

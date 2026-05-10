@@ -2,8 +2,8 @@ package defensa.estados;
 
 import defensa.Antivirus;
 import defensa.AntivirusState;
-import gui.MenuConsola;
 import malware.Malware;
+import ui.MenuConsola;
 
 public class SeguroState implements AntivirusState
 {

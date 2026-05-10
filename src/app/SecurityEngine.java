@@ -2,7 +2,7 @@ package app;
 
 import malware.decoradores.*;
 import sistema.decoradores.*;
-import gui.*;
+import ui.*;
 import defensa.Antivirus;
 import malware.Malware;
 import malware.MalwareFactory;

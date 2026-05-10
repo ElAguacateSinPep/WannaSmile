@@ -2,8 +2,8 @@ package defensa.estados;
 
 import defensa.Antivirus;
 import defensa.AntivirusState;
-import gui.MenuConsola;
 import malware.Malware;
+import ui.MenuConsola;
 import utilidades.Utils;
 
 public class NoDetectadoState implements AntivirusState

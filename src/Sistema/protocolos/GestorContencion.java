@@ -1,6 +1,6 @@
 package sistema.protocolos;
 
-import gui.MenuConsola;
+import ui.MenuConsola;
 
 public class GestorContencion
 {

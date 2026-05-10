@@ -2,9 +2,9 @@ package defensa;
 
 import defensa.analisis.*;
 import defensa.estados.*;
-import gui.MenuConsola;
 import malware.Malware;
 import sistema.Sistema;
+import ui.MenuConsola;
 import utilidades.Utils;
 
 public class Antivirus
