@@ -13,7 +13,7 @@ public class AnalisisRapidoStrategy implements AnalisisStrategy
     {
         int variacionDeteccion = 0;
 
-        MenuConsola.menu.logsAnalisisRaido();
+        MenuConsola.menu.logsAnalisisRapido();
         variacionDeteccion += DISMINUCION_ANALISIS_HEURISTICO;
 
         MenuConsola.menu.printVariacionDeteccion(variacionDeteccion);

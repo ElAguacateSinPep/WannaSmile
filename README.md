@@ -1,4 +1,4 @@
-# WannaSmyle
+# WannaSmile
 
 **Autores:** Stefan Trifan y Alfredo Muñoz
 

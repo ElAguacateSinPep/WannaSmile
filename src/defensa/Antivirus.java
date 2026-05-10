@@ -26,7 +26,7 @@ public class Antivirus
 
     // ------------------------ Métodos Públicos
     // <Facade y Templaye Method>
-    public void protocoloAntiIndicentes()
+    public void protocoloAntiIncidentes()
     {
         if (analizarArchivo())
         {

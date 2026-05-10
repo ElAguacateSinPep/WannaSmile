@@ -17,7 +17,7 @@ public class NoDetectadoState implements AntivirusState
     @Override
     public void mostrarDesenlace(Malware malware)
     {
-        MenuConsola.menu.printAmenazazaNoDetectada();
+        MenuConsola.menu.printAmenazaNoDetectada();
         MenuConsola.menu.printMensajeMalware(malware.getMensaje());
         Utils.esperar(5000);
         malware.ejecutarPayload();

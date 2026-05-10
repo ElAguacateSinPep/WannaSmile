@@ -412,7 +412,7 @@ public class MenuConsola
         }
     }
 
-    public void logsAnalisisRaido()
+    public void logsAnalisisRapido()
     {
         Utils.esperar(800);
 
@@ -638,7 +638,7 @@ public class MenuConsola
     // Mostrar Resultado
     // ====================================================
 
-    public void printAmenazazaNoDetectada()
+    public void printAmenazaNoDetectada()
     {
         System.out.println(MenuConsola.ROJO +
             """

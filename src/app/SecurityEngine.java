@@ -75,7 +75,7 @@ public class SecurityEngine
         menu.printAntivirusArchivoDetectado();
 
         // Se llama al protocolo completo de defensa del antivirus
-        antivirus.protocoloAntiIndicentes();
+        antivirus.protocoloAntiIncidentes();
     }
 
     // ------------------------ Métodos Privados
