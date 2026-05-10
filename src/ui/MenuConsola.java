@@ -477,18 +477,13 @@ public class MenuConsola
     // Respuesta ante incidentes > general
     // ====================================================
 
-    public static void printStatsRespuesta(int propagacion, int contencion)
+    public void printStatsRespuesta(int propagacion, int contencion)
     {
         System.out.println(MORADO);
         System.out.println("╭─────────────── STATS ────────────────╮");
         System.out.printf("│ CONTENCION = %3d | PROPAGACION = %3d │%n", propagacion, contencion);
         System.out.println("╰──────────────────┴───────────────────╯");
         System.out.println(RESET);
-    }
-
-    public static void main(String[] args)
-    {
-        printStatsRespuesta(10, 10);
     }
 
     public void printAumentoContencion()
