@@ -342,8 +342,8 @@ public class MenuConsola
         System.out.println(
             "macOS solicita permiso para ejecutar el archivo en segundo plano."
                 + "\n¿Permitir?"
-                + "\n[1] - No"
-                + "\n[2] - Si"); // + sigilo
+                + "\n[2] - Si" // + sigilo
+                + "\n[1] - No");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -510,7 +510,7 @@ public class MenuConsola
             "Windows Defender no puede garantizar la seguridad del archivo."
                 + "\n¿Ejecutar el archivo igualmente?"
                 + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[2] - No"); // + contencion
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -522,8 +522,8 @@ public class MenuConsola
         System.out.println(
             "Archivo desconocido intenta comunicarse con Internet."
                 + "\n¿Permitir acceso?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[1] - No" // + contencion
+                + "\n[2] - Si");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -535,8 +535,8 @@ public class MenuConsola
         System.out.println(
             "Windows Firewall ha bloqueado una conexión sospechosa."
                 + "\n¿Permitirla manualmente?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[2] - No" // + contencion
+                + "\n[1] - Si");
         System.out.print("-> Elige una opción: ");
 
         int opcion = pedirOpcion(1, 2);
@@ -553,7 +553,7 @@ public class MenuConsola
             "El archivo intenta abrir un puerto local. "
                 + "\n¿Permitir apertura de puerto?"
                 + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[2] - No"); // contencion
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -565,8 +565,8 @@ public class MenuConsola
         System.out.println(
             "El archivo solicita acceso al Finder. "
                 + "\n¿Permitir acceso completo?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[1] - No" // + contencion
+                + "\n[2] - Si");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -578,8 +578,8 @@ public class MenuConsola
         System.out.println(
             "El archivo intenta añadirse a ítems de inicio. "
                 + "\n¿Proceder?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[2] - No" // + contencion
+                + "\n[1] - Si");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -595,7 +595,7 @@ public class MenuConsola
             "Terminal: El archivo intenta ejecutarse con sudo."
                 + "\n¿Introducir contraseña?"
                 + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[2] - No"); // contencion
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -607,8 +607,8 @@ public class MenuConsola
         System.out.println(
             "El archivo intenta copiarse en varias ubicaciones del sistema."
                 + "\n¿Permitir?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[2] - Si"
+                + "\n[1] - No"); // + contencion
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();

@@ -19,7 +19,7 @@ public class NoDetectadoState implements AntivirusState
     {
         MenuConsola.menu.printAmenazaNoDetectada();
         MenuConsola.menu.printMensajeMalware(malware.getMensaje());
-        Utils.esperar(5000);
+        Utils.esperar(8000);
         malware.ejecutarPayload();
     }
 }

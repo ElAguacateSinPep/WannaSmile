@@ -20,7 +20,7 @@ public class AmenazaDetectadaState implements AntivirusState
     {
         MenuConsola.menu.printAmenazaDetectadaSistemaInfectado();
         MenuConsola.menu.printMensajeMalware(malware.getMensaje());
-        Utils.esperar(5000);
+        Utils.esperar(8000);
         malware.ejecutarPayload();
     }
 }

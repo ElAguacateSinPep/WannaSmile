@@ -26,13 +26,13 @@ public class GestorContencion
 
         if (menu.alertaArchivoDesconocido() == 1)
         {
-            menu.printDisminucionContencion();
-            variacion += DECREMENTO_CONTENCION;
+            menu.printAumentoContencion();
+            variacion += AUMENTO_CONTENCION;
         }
         else
         {
-            menu.printAumentoContencion();
-            variacion += AUMENTO_CONTENCION;
+            menu.printDisminucionContencion();
+            variacion += DECREMENTO_CONTENCION;
         }
 
         if (menu.alertaWindowsFirewall() == 1)
@@ -67,13 +67,13 @@ public class GestorContencion
 
         if (menu.alertaAccesoFinder() == 1)
         {
-            menu.printDisminucionContencion();
-            variacion += DECREMENTO_CONTENCION;
+            menu.printAumentoContencion();
+            variacion += AUMENTO_CONTENCION;
         }
         else
         {
-            menu.printAumentoContencion();
-            variacion += AUMENTO_CONTENCION;
+            menu.printDisminucionContencion();
+            variacion += DECREMENTO_CONTENCION;
         }
 
         if (menu.alertaItemsInicio() == 1)
@@ -109,12 +109,12 @@ public class GestorContencion
         if (menu.alertaPropagacionSisArchivos() == 1)
         {
             menu.printDisminucionContencion();
-            variacion += DECREMENTO_CONTENCION;
+            variacion += AUMENTO_CONTENCION;
         }
         else
         {
-            menu.printAumentoContencion();
-            variacion += AUMENTO_CONTENCION;
+            menu.printDisminucionContencion();
+            variacion += DECREMENTO_CONTENCION;
         }
 
         return variacion;
