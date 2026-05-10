@@ -217,10 +217,6 @@ public class MenuConsola
     }
 
     // ====================================================
-    // COMPORTAMIENTO
-    // ====================================================
-
-    // ====================================================
     // Antivirus
 
     public void printAntivirusArchivoDetectado()
@@ -304,7 +300,7 @@ public class MenuConsola
         System.out.println(
             "Windows Defender: Este archivo solicita permisos de administrador."
                 + "\n¿Permitir?"
-                + "\n[1] - Si"
+                + "\n[1] - Si" // + sigilo
                 + "\n[2] - No");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
@@ -317,8 +313,8 @@ public class MenuConsola
         System.out.println(
             "Windows Defender detecta comportamiento sospechoso."
                 + "\n¿Ignorar advertencia?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[1] - No"
+                + "\n[2] - Si"); // + sigilo
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -333,7 +329,7 @@ public class MenuConsola
         System.out.println(
             "Este archivo proviene de un desarrollador no verificado."
                 + "\n¿Abrir igualmente?"
-                + "\n[1] - Si"
+                + "\n[1] - Si" // + sigilo
                 + "\n[2] - No");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
@@ -346,8 +342,8 @@ public class MenuConsola
         System.out.println(
             "macOS solicita permiso para ejecutar el archivo en segundo plano."
                 + "\n¿Permitir?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[1] - No"
+                + "\n[2] - Si"); // + sigilo
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -363,7 +359,7 @@ public class MenuConsola
             "El firewall de linux está desactivado."
                 + "\n¿Deseas activarlo?"
                 + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[2] - No"); // + sigilo
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -375,8 +371,8 @@ public class MenuConsola
         System.out.println(
             "Linux está desactualizado. "
                 + "\n¿Deseas actualizar a la última versión?"
-                + "\n[1] - Si"
-                + "\n[2] - No");
+                + "\n[1] - No" // + sigilo
+                + "\n[2] - Si");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);
         System.out.println();
@@ -388,7 +384,7 @@ public class MenuConsola
         System.out.println(
             "PortDaemon ha bloqueado una conexión sospechosa."
                 + "\n¿Permitirla manualmente?"
-                + "\n[1] - Si"
+                + "\n[1] - Si" // + sigilo
                 + "\n[2] - No");
         System.out.print("-> Elige una opción: ");
         int opcion = pedirOpcion(1, 2);

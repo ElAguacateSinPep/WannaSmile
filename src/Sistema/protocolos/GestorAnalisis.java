@@ -26,13 +26,13 @@ public class GestorAnalisis
 
         if (menu.alertaIgnorarAdvertencia() == 1)
         {
-            menu.printAumentoSigilo();
-            variacion += AUMENTO_SIGILO;
+            menu.printDisminucionSigilo();
+            variacion += DECREMENTO_SIGILO;
         }
         else
         {
-            menu.printDisminucionSigilo();
-            variacion += DECREMENTO_SIGILO;
+            menu.printAumentoSigilo();
+            variacion += AUMENTO_SIGILO;
         }
 
         return variacion;
@@ -56,13 +56,13 @@ public class GestorAnalisis
 
         if (menu.alertaSegundoPlano() == 1)
         {
-            menu.printAumentoSigilo();
-            variacion += AUMENTO_SIGILO;
+            menu.printDisminucionSigilo();
+            variacion += DECREMENTO_SIGILO;
         }
         else
         {
-            menu.printDisminucionSigilo();
-            variacion += DECREMENTO_SIGILO;
+            menu.printAumentoSigilo();
+            variacion += AUMENTO_SIGILO;
         }
 
         return variacion;
@@ -86,13 +86,13 @@ public class GestorAnalisis
 
         if (menu.alertaSODesactualizado() == 1)
         {
-            menu.printDisminucionSigilo();
-            variacion += DECREMENTO_SIGILO;
+            menu.printAumentoSigilo();
+            variacion += AUMENTO_SIGILO;
         }
         else
         {
-            menu.printAumentoSigilo();
-            variacion += AUMENTO_SIGILO;
+            menu.printDisminucionSigilo();
+            variacion += DECREMENTO_SIGILO;
         }
 
         if (menu.alertaConexion() == 1)
