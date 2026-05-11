@@ -2,6 +2,7 @@
 /5_proyecto_final/
 
 # Mac
+.DS_Store
 .DS_Store.tags
 
 # IDEs
